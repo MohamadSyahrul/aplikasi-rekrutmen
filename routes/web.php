@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,17 @@ Auth::routes();
 Route::get('/dashboard',function () {
     return view('pages.dashboard');
 });
+
+    // Route::middleware([Admin::class])->group(function () { *aktifkan jika auth sudah selesai
+        Route::get('/dataLowonganKerja',function () {
+            return view('pages.admin.data-loker.index');
+        });
+        Route::get('/dataPelamar',function () {
+            return view('pages.admin.data-pelamar.index');
+        });
+    // });
+
+    // Route::middleware([Pelamar::class])->group(function () { *aktifkan jika auth sudah selesai
+
+
+    // });
