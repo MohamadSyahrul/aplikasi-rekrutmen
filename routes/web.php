@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeUnit\FunctionUnit;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,18 +24,18 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard',function () {
-    return view('pages.dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('pages.dashboard');
+    });
 });
 
-    // Route::middleware([Admin::class])->group(function () { *aktifkan jika auth sudah selesai
-        Route::get('/dataLowonganKerja',function () {
-            return view('pages.admin.data-loker.index');
-        });
-        Route::get('/dataPelamar',function () {
-            return view('pages.admin.data-pelamar.index');
-        });
-    // });
+// *aktifkan jika auth sudah selesai
+Route::middleware([Admin::class, 'auth'])->group(function () {
+    Route::resource('dataPelamar', 'Admin\PelamarController');
+    Route::resource('lowonganKerja', 'Admin\LokerController');
+    Route::resource('lamaran', 'Admin\LamaranController');
+});
 
     // Route::middleware([Pelamar::class])->group(function () { *aktifkan jika auth sudah selesai
 

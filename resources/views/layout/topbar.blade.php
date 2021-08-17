@@ -1,10 +1,5 @@
-                <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href="" class="">Application</a> <i
-                    data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
-                    class="breadcrumb--active">Dashboard</a> </div>
-            <!-- END: Breadcrumb -->
             <!-- BEGIN: Search -->
-            <div class="intro-x relative mr-3 sm:mr-6">
+            <div class="intro-x relative ml-auto mr-3 sm:mr-6">
                 <div class="search hidden sm:block">
                     <input type="text" class="search__input input placeholder-theme-13" placeholder="Search...">
                     <i data-feather="search" class="search__icon"></i>
@@ -235,7 +230,7 @@
                 <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
                     <div class="dropdown-box__content box bg-theme-38 text-white">
                         <div class="p-4 border-b border-theme-40">
-                            <div class="font-medium">Angelina Jolie</div>
+                            <div class="font-medium">{{ Auth::user()->username }}</div>
                             <div class="text-xs text-theme-41">Software Engineer</div>
                         </div>
                         <div class="p-2">

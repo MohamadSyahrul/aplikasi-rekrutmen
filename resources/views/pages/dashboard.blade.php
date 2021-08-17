@@ -2,6 +2,9 @@
 @section('title')
 Dashboard
 @endsection
+@section('breadcrumb')
+Dashboard
+@endsection
 @section('content')
 
 <div class="grid grid-cols-12 gap-6">
@@ -83,7 +86,7 @@ Dashboard
             </div>
         </div>
         <!-- END: General Report -->
-       
+
     </div>
 
 </div>
