@@ -17,4 +17,9 @@ class Lamaran extends Model
     {
         return $this->belongsTo(Pelamar::class);
     }
+
+    public function jawaban()
+    {
+        return $this->hasMany(Jawaban::class);
+    }
 }

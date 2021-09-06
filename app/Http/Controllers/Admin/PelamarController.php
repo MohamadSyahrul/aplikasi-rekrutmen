@@ -109,7 +109,7 @@ class PelamarController extends Controller
         $date = strtotime($request->tgl_lahir);
         $date_format = date('Y-m-d', $date);
 
-        $data = pelamar::findOrFail($id);
+        $data = Pelamar::findOrFail($id);
         $data->nama = $request->nama;
         $data->tempat_lahir = $request->tempat_lahir;
         $data->tgl_lahir = $date_format;

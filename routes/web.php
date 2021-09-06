@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\Admin;
+use App\Http\Middleware\Pelamar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeUnit\FunctionUnit;
@@ -37,7 +38,22 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('lamaran', 'Admin\LamaranController');
 });
 
-    // Route::middleware([Pelamar::class])->group(function () { *aktifkan jika auth sudah selesai
+Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {
+    Route::get('dataPelamar', 'Pelamar\PelamarController@show')->name('pelamarDataPelamar.show');
+    Route::get('dataPelamar/{id}', 'Pelamar\PelamarController@edit')->name('pelamarDataPelamar.edit');
+    Route::patch('dataPelamar/{id}', 'Pelamar\PelamarController@update')->name('pelamarDataPelamar.update');
 
+    Route::resource('pekerjaan', 'Pelamar\PekerjaanController');
 
-    // });
+    Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
+    Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
+    Route::get('lowonganKerja/{id}', 'Pelamar\LokerController@show')->name('pelamarLowonganKerja.show');
+    Route::get('lowonganKerja/lamar/{id}', 'Pelamar\LokerController@lamar')->name('pelamarLowonganKerja.lamar');
+    Route::delete('lowonganKerja/lamar/{id}', 'Pelamar\LokerController@hapusLamaran')->name('pelamarLowonganKerja.hapusLamaran');
+
+    Route::get('kuis', 'Pelamar\KuisController@index')->name('pelamarKuis.index');
+    Route::get('kuis/{id}', 'Pelamar\KuisController@show')->name('pelamarKuis.show');
+
+    Route::get('soal/{id}', 'Pelamar\SoalController@show')->name('pelamarSoal.show');
+    Route::post('soal', 'Pelamar\SoalController@store')->name('pelamarSoal.store');
+});

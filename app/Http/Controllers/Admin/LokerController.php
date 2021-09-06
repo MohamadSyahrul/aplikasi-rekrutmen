@@ -131,7 +131,7 @@ class LokerController extends Controller
 
         $loker->update($data);
 
-        return redirect(route('lowonganKerja.index'))->with('success', 'Lowongan Kerja berhasil Diubah');
+        return redirect(route('lowonganKerja.index'),)->with('success', 'Lowongan Kerja berhasil Diubah');
     }
 
     /**

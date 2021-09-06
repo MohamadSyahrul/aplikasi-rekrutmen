@@ -12,11 +12,6 @@
     <h2 class="text-lg font-medium mr-auto">
       Data Lowongan Kerja
     </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <a href="{{ route('lowonganKerja.create') }}">
-        <button class="button text-white bg-theme-1 shadow-md mr-2">Tambah Data</button>
-      </a>
-    </div>
   </div>
   @if (session()->get('success'))
     <div class="p-5" id="icon-dismiss-alert">
@@ -50,22 +45,22 @@
             <td class="text-center border-b">{{ $loker->jenis_kelamin }}</td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('lowonganKerja.show', $loker->id) }}">
+                <a class="flex items-bottom mr-3 text-theme-1"
+                  href="{{ route('pelamarLowonganKerja.show', $loker->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
                 </a>
-                <a class="flex items-bottom mr-3" href="{{ route('lowonganKerja.edit', $loker->id) }}">
+                <a class="flex items-bottom mr-3" href="{{ route('pelamarLowonganKerja.lamar', $loker->id) }}">
                   <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                  Edit
+                  Lamar
                 </a>
-                <form action="{{ route('lowonganKerja.destroy', $loker->id) }}" method="post"
+                <form action="{{ route('pelamarLowonganKerja.hapusLamaran', $loker->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf
                   @method('DELETE')
                   <button type="submit">
-                    <div class="flex items-bottom text-theme-6">
-                      <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                      Delete
+                    <div class="flex items-center text-theme-6"><i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
+                      Hapus Lamaran
                     </div>
                   </button>
                 </form>

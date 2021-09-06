@@ -16,7 +16,7 @@ class Pelamar
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->level != "pelamar"){
+        if (Auth::user()->level != "pelamar") {
             return redirect()->to('login');
         }
         return $next($request);
