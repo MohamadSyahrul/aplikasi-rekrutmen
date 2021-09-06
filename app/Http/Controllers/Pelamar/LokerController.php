@@ -43,7 +43,7 @@ class LokerController extends Controller
             ->get();
         // return $lamaran;
 
-        if ($lamaran == NULL || $lamaran == true) {
+        if ($lamaran) {
             return redirect(route('pelamarLowonganKerja.index', compact('data')))->with('success', 'Lamaran anda sudah ada');
         } else {
             $lamaran = Lamaran::create([
