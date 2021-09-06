@@ -38,10 +38,6 @@ Login
             <a href="{{ route('register') }}" class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">Sign up</a>
         </div>
     </form>
-    <div class="intro-x mt-10 xl:mt-24 text-gray-700 text-center xl:text-left">
-        By signin up, you agree to our
-        <br>
-        <a class="text-theme-1" href="">Terms and Conditions</a> & <a class="text-theme-1" href="">Privacy Policy</a>
-    </div>
+   
 </div>
 @endsection
