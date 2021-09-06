@@ -36,11 +36,7 @@
                     <input type="password" class="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder="Password Confirmation" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
-                <div class="intro-x flex items-center text-gray-700 mt-4 text-xs sm:text-sm">
-                    <input type="checkbox" class="input border mr-2" id="remember-me">
-                    <label class="cursor-pointer select-none" for="remember-me">I agree to the Envato</label>
-                    <a class="text-theme-1 ml-1" href="">Privacy Policy</a>.
-                </div>
+               
                 <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                     <button type="submit" class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">Register</button>
                     <a href="{{ route('login') }}" class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">Sign in</a>

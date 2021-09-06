@@ -32,23 +32,7 @@ Login
             @enderror
 
         </div>
-        <div class="intro-x flex text-gray-700 text-xs sm:text-sm mt-4">
-            <div class="flex items-center mr-auto">
-                <input class="input border mr-2" type="checkbox" name="remember" id="remember"
-                    {{ old('remember') ? 'checked' : '' }}>
-                <label class="cursor-pointer select-none" for="remember-me">
-                    {{ __('Remember Me') }}
-
-                </label>
-            </div>
-
-            @if (Route::has('password.request'))
-            <a class="btn btn-link" href="{{ route('password.request') }}">
-                {{ __('Forgot Your Password?') }}
-            </a>
-            @endif
-            {{-- <a href="">Forgot Password?</a> --}}
-        </div>
+        
         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
             <button type="submit" class="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">Login</button>
             <a href="{{ route('register') }}" class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">Sign up</a>
