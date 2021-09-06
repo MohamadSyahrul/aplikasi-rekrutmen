@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Pelamar;
+use App\Pendidikan;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
@@ -71,8 +72,12 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        Pelamar::create([
+        $pelamar = Pelamar::create([
             'user_id' => $user['id']
+        ]);
+
+        $pendidikan = Pendidikan::create([
+            'pelamar_id' => $pelamar->id
         ]);
 
         return $user;

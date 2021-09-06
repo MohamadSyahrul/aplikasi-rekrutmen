@@ -41,9 +41,10 @@ class LokerController extends Controller
         $lamaran = Lamaran::where('loker_id', $loker->id)
             ->where('pelamar_id', Auth::user()->pelamar->id)
             ->get();
+        // return $lamaran;
 
-        if ($lamaran) {
-            return redirect(route('pelamarLowonganKerja.index', compact('data')))->with('success', 'Lamaran anda sudah dibuat');
+        if ($lamaran == NULL || $lamaran == true) {
+            return redirect(route('pelamarLowonganKerja.index', compact('data')))->with('success', 'Lamaran anda sudah ada');
         } else {
             $lamaran = Lamaran::create([
                 'tanggal_unggah' => Carbon::now(),
