@@ -28,7 +28,7 @@
     <table class="table table-report table-report--bordered display datatable w-full">
       <thead>
         <tr>
-          <th class="border-b-2 whitespace-no-wrap">Nama</th>
+          <th class="border-b-2 whitespace-no-wrap">Nama Pekerjaan</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Pendidikan</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Jenis Kelamin</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>

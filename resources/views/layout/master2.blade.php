@@ -29,7 +29,9 @@
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             Selamat Datang 
                             <br>
-                            Di Aplikasi Rekrutmen Pegawai
+                            di Aplikasi Rekrutmen Pegawai
+                            <br>
+                            CV Juna Network Indonesia
                         </div>
                         <div class="-intro-x mt-5 text-lg text-white">Try to register yourself to pursue your career in this company.</div>
                     </div>

@@ -39,7 +39,7 @@
           <div class="p-5" id="horizontal-form">
             <div class="preview">
               <div class="flex flex-col sm:flex-row items-center">
-                <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama</label>
+                <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Pekerjaan</label>
                 <input name="nama" type="text" class="input w-full border mt-2 flex-1" placeholder="Nama"
                   value="{{ old('nama') }}">
               </div>
@@ -57,13 +57,13 @@
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Jenis Kelamin</label>
                 <select name="jenis_kelamin" class="input w-full border mt-2 flex-1">
                   <option>Pilih Jenis Kelamin</option>
-                  <option value="1">Laki laki</option>
-                  <option value="2">Perempuan</option>
+                  <option value="1">Pria</option>
+                  <option value="2">Wanita</option>
                 </select>
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Umur</label>
-                <input name="umur" type="number" class="input w-full border mt-2 flex-1" placeholder="Dalam Tahun"
+                <input name="umur" type="text" class="input w-full border mt-2 flex-1" placeholder="Dalam Tahun"
                   value="{{ old('umur') }}">
               </div>
               <div class="flex flex-col sm:flex-row items-center">
@@ -82,7 +82,7 @@
                   placeholder="Batas Lamaran">
               </div>
               <div class="flex flex-col sm:flex-row items-center">
-                <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Deskripsi</label>
+                <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Deskripsi Pekerjaan</label>
                 <div class="input w-full h-auto mt-2 flex-1">
                   <textarea class="summernote" name="deskripsi"
                     placeholder="Deskripsi">{{ old('deskripsi') }}</textarea>

@@ -179,7 +179,7 @@
                 <div class="flex sm:justify-center items-center mx-5 sm:mr-5">
                   <a class="flex items-bottom mr-3" href="{{ route('pekerjaan.edit', $pekerjaan->id) }}">
                     <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                    Edit
+                    Ubah
                   </a>
                   <form action="{{ route('pekerjaan.destroy', $pekerjaan->id) }}" method="post"
                     onsubmit="return confirm('Yakin hapus data ?')">
@@ -188,7 +188,7 @@
                     <button type="submit">
                       <div class="flex items-bottom text-theme-6" href="">
                         <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                        Delete
+                        Hapus
                       </div>
                     </button>
                   </form>

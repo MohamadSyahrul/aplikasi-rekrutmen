@@ -120,11 +120,11 @@ class LokerController extends Controller
         $data['batas_lamaran'] = date('Y-m-d', $date);
 
         if ($data['jenis_kelamin'] == 1) {
-            $data['jenis_kelamin'] = 'Laki laki';
+            $data['jenis_kelamin'] = 'Pria';
         } elseif ($data['jenis_kelamin'] == 2) {
-            $data['jenis_kelamin'] = 'Perempuan';
+            $data['jenis_kelamin'] = 'Wanita';
         } else {
-            $data['jenis_kelamin'] = 'Laki laki atau Perempuan';
+            $data['jenis_kelamin'] = 'Pria atau Wanita';
         }
 
         $loker = Loker::findOrFail($id);

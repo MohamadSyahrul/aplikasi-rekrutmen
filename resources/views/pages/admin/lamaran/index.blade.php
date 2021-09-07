@@ -32,7 +32,7 @@
     <table class="table table-report table-report--bordered display datatable w-full">
       <thead>
         <tr>
-          <th class="border-b-2 whitespace-no-wrap">Nama</th>
+          <th class="border-b-2 whitespace-no-wrap">Nama Pekerjaan</th>
           <th class="border-b-2 whitespace-no-wrap">Nama Pelamar</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Batas Lamaran</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Tanggal Unggah</th>
@@ -66,13 +66,13 @@
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
                 <a class="flex items-center mr-3" href="{{ route('dataPelamar.edit', $lamaran->id) }}"> <i
-                    data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                    data-feather="check-square" class="w-4 h-4 mr-1"></i> Ubah </a>
                 <form action="{{ route('dataPelamar.destroy', $lamaran->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf
                   @method('DELETE')
                   <button type="submit">
-                    <a class="flex items-center text-theme-6"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                    <a class="flex items-center text-theme-6"> <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Hapus
                     </a>
                   </button>
                 </form>
