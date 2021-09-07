@@ -59,6 +59,7 @@
                   <option>Pilih Jenis Kelamin</option>
                   <option value="1">Pria</option>
                   <option value="2">Wanita</option>
+                  <option value="3">Pria/Wanita</option>
                 </select>
               </div>
               <div class="flex flex-col sm:flex-row items-center">

@@ -114,9 +114,9 @@ class PelamarController extends Controller
         $data->tempat_lahir = $request->tempat_lahir;
         $data->tgl_lahir = $date_format;
         if ($request->jenis_kelamin == 1) {
-            $data->jenis_kelamin = 'Laki laki';
+            $data->jenis_kelamin = 'Pria';
         } elseif ($request->jenis_kelamin == 2) {
-            $data->jenis_kelamin = 'Perempuan';
+            $data->jenis_kelamin = 'Wanita';
         }
         $data->no_telp = $request->no_telp;
 

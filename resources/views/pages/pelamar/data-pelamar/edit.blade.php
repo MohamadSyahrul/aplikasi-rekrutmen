@@ -69,8 +69,8 @@
                     <label class="w-full lg:w-40 sm:w-20 sm:text-left">Jenis Kelamin</label>
                     <select name="jenis_kelamin" class="input w-full border my-2">
                       <option>Pilih Jenis Kelamin</option>
-                      <option value="1">Laki laki</option>
-                      <option value="2">Perempuan</option>
+                      <option value="1">Pria</option>
+                      <option value="2">Wanita</option>
                     </select>
                   </div>
                   <div class="flex flex-col sm:flex-row items-center">
