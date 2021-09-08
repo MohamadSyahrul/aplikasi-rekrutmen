@@ -15,25 +15,25 @@
       </a>
     </div>
   </div>
-  <!-- BEGIN: Invoice -->
+  <!-- BEGIN: Peraturan -->
   <div class="intro-y box overflow-hidden mt-5">
     <div class="border-b border-gray-200 text-center sm:text-left">
       <div class="px-5 py-1 sm:px-20 sm:py-20">
         <div class="text-theme-1 font-semibold text-3xl">Peraturan {{ $data->nama }}</div>
         <div class="mt-1">{{ date('d-M-Y', strtotime($data->tanggal_kuis)) }}</div>
       </div>
-      <div class="flex flex-col lg:flex-row px-5 sm:px-20 sm:pb-20">
-        <div class="">
-          <div class="text-base text-gray-600">Detail</div>
-          <ol>
-            <li class="mt-1">Jawablah pertanyaan dengan baik dan benar</li>
-            <li class="mt-1">Soal kuis terdiri dari pilihan ganda dan esai</li>
-            <li class="mt-1">Anda bisa mengulang ke pertanyaan sebelumnya untuk memeriksa jawaban</li>
-            <li class="mt-1">Durasi pengerjaan soal selama {{ date('H', strtotime($data->durasi)) }}</li>
-          </ol>
+      <div class="block lg:flex-row px-5 sm:px-20 sm:pb-20">
+        <div class=" text-base text-gray-600">
+          Detail
         </div>
+        <ol>
+          <li class="mt-1">Jawablah pertanyaan dengan baik dan benar</li>
+          <li class="mt-1">Soal kuis terdiri dari pilihan ganda dan esai</li>
+          <li class="mt-1">Anda bisa mengulang ke pertanyaan sebelumnya untuk memeriksa jawaban</li>
+          <li class="my-1">Durasi pengerjaan soal selama {{ date('H', strtotime($data->durasi)) }} jam</li>
+        </ol>
       </div>
     </div>
   </div>
-  <!-- END: Invoice -->
+  <!-- END: Peraturan -->
 @endsection

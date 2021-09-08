@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kuis extends Model
+class Pengumuman extends Model
 {
     protected $guarded = ['id'];
 
-    public function soal()
+    public function loker()
     {
-        return $this->hasMany(Soal::class);
+        return $this->belongsTo(Loker::class);
     }
 }

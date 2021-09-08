@@ -25,6 +25,10 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('icon', function () {
+    return view('pages.icon');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('pages.dashboard');
@@ -57,4 +61,7 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
 
     Route::get('soal/{id}', 'Pelamar\SoalController@show')->name('pelamarSoal.show');
     Route::post('soal', 'Pelamar\SoalController@store')->name('pelamarSoal.store');
+
+    Route::get('pengumuman', 'Pelamar\PengumumanController@index')->name('pelamarPengumuman.index');
+    Route::get('pengumuman/{id}', 'Pelamar\PengumumanController@show')->name('pelamarPengumuman.show');
 });

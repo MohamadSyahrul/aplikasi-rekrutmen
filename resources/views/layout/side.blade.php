@@ -1,5 +1,6 @@
 <a href="" class="intro-x flex items-center pl-5 pt-4">
-  <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{ asset('template/dist/images/logo.svg') }}">
+  <img alt="Midone Tailwind HTML Admin Template" class="w-6"
+    src="{{ asset('template/dist/images/logo.svg') }}">
   <span class="hidden xl:block text-white text-lg ml-3"> Mid<span class="font-medium">one</span> </span>
 </a>
 <div class="side-nav__devider my-6"></div>
@@ -7,8 +8,7 @@
 
   <ul>
     <li>
-      <a href="{{ url('/dashboard') }}"
-        class="side-menu {{ Request::is('dashboard*') ? 'side-menu--active' : '' }}">
+      <a href="{{ url('/dashboard') }}" class="side-menu {{ Request::is('dashboard*') ? 'side-menu--active' : '' }}">
         <div class="side-menu__icon"> <i data-feather="home"></i> </div>
         <div class="side-menu__title"> Dashboard </div>
       </a>
@@ -81,6 +81,13 @@
         class="side-menu {{ Request::is('pelamar/kuis*') ? 'side-menu--active' : '' }}">
         <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
         <div class="side-menu__title"> Kuis </div>
+      </a>
+    </li>
+    <li>
+      <a href="{{ url('pelamar/pengumuman') }}"
+        class="side-menu {{ Request::is('pelamar/pengumuman*') ? 'side-menu--active' : '' }}">
+        <div class="side-menu__icon"> <i data-feather="message-circle"></i> </div>
+        <div class="side-menu__title"> Pengumuman </div>
       </a>
     </li>
   </ul>

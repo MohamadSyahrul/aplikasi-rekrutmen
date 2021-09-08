@@ -1,9 +1,10 @@
 <?php
 
 use App\Kuis;
+use App\Soal;
 use App\User;
 use App\Loker;
-use App\Soal;
+use App\Pengumuman;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -58,6 +59,13 @@ class DatabaseSeeder extends Seeder
             'soal' => 'Sebelum memasak mie instan apa hal pertama yang',
             'kunci_jawaban' => 'Mie Instan',
             'kuis_id' => '1',
+        ]);
+
+        Pengumuman::create([
+            'tgl_pengumuman' => `2021-09-08`,
+            'ket_pengumuman' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta animi, fugiat aperiam porro aliquam eveniet provident reiciendis voluptatibus fugit incidunt explicabo quisquam magnam inventore ad, esse similique molestias tempore facere aliquid accusamus nesciunt excepturi magni tempora rem! Officia iure saepe sint nesciunt quaerat rerum praesentium at qui nisi placeat optio repellendus itaque cupiditate rem, dolorem amet quisquam deserunt ex laudantium necessitatibus, ratione dolore similique. Porro quae aspernatur vitae amet reiciendis libero alias temporibus quod nesciunt ratione dolor, praesentium fugiat. Ut magni at, itaque quasi necessitatibus saepe dignissimos, quaerat id minima, nesciunt cumque molestias nostrum iste aliquid soluta fugit veniam. Esse?',
+            'privasi' => 'public',
+            'loker_id' => 1
         ]);
     }
 }

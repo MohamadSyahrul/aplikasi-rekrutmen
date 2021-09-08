@@ -12,4 +12,9 @@ class Loker extends Model
     {
         return $this->hasMany(Lamaran::class);
     }
+
+    public function pengumuman()
+    {
+        return $this->hasOne(Pengumuman::class);
+    }
 }

@@ -10,16 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class PekerjaanController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -55,16 +45,7 @@ class PekerjaanController extends Controller
         return redirect(route('pelamarDataPelamar.show'))->with('success', 'Pekerjaan berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Pekerjaan  $pekerjaan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pekerjaan $pekerjaan)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
