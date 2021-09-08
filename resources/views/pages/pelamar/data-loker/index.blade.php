@@ -28,21 +28,19 @@
     <table class="table table-report table-report--bordered display datatable w-full">
       <thead>
         <tr>
+          <th class="border-b-2 whitespace-no-wrap">Tanggal</th>
           <th class="border-b-2 whitespace-no-wrap">Nama Pekerjaan</th>
-          <th class="border-b-2 text-center whitespace-no-wrap">Pendidikan</th>
-          <th class="border-b-2 text-center whitespace-no-wrap">Jenis Kelamin</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($data as $loker)
           <tr>
+            <td class="whitespace-no-wrap border-b">{{ date('d F Y',strtotime($loker->created_at)) }}</td>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">{{ $loker->nama }}</div>
-              <div class="text-gray-600 text-xs whitespace-no-wrap">{{ $loker->detail }}</div>
+              <div class="text-gray-600 text-xs whitespace-no-wrap">{!! $loker->detail !!}</div>
             </td>
-            <td class="text-center border-b">{{ $loker->tingkat_pendidikan }}</td>
-            <td class="text-center border-b">{{ $loker->jenis_kelamin }}</td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
                 <a class="flex items-bottom mr-3 text-theme-1"

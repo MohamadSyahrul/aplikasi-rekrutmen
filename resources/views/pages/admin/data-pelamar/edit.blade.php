@@ -10,21 +10,6 @@
     <h2 class="text-lg font-medium mr-auto">
       Ubah Data Pelamar
     </h2>
-    <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-      <div class="dropdown relative ml-auto sm:ml-0">
-        <button class="dropdown-toggle button px-2 box text-gray-700">
-          <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-feather="plus"></i>
-          </span>
-        </button>
-        <div class="dropdown-box mt-10 absolute w-40 top-0 right-0 z-20">
-          <div class="dropdown-box__content box p-2">
-            <a href="{{ url('dataPelamar/update') }}"
-              class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
-              <i data-feather="file-plus" class="w-4 h-4 mr-2"></i> Tambah Data </a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <div class="grid grid-cols-12 gap-6 mt-5">
@@ -34,7 +19,7 @@
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
           <h2 class="font-medium text-base mr-auto">Perbarui Data User</h2>
         </div>
-        <form action="{{ route('dataPelamar.update', $data->pelamar->id) }}" method="POST">
+        <form action="{{ route('dataPelamar.update', $data->pelamar->id) }}" method="POST" enctype="multipart/form-data">
           @method('PATCH')
           @csrf
           <div class="p-5" id="horizontal-form">
@@ -77,6 +62,10 @@
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">No Telepon</label>
                 <input name="no_telp" type="text" class="input w-full border mt-2 flex-1" placeholder="Nomor Telepon"
                   value="{{ old('no_telp') ?? $data->pelamar->no_telp }}">
+              </div>
+              <div class="flex flex-col sm:flex-row items-center">
+                <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Foto Profil</label>
+                <input type="file" class="input w-full border mt-2 flex-1" name="foto" placeholder="Upload Foto Profil">
               </div>
               <div class="flex sm:flex-row items-center mt-5">
                 <button type="submit" class="button bg-theme-1 text-white">Simpan</button>

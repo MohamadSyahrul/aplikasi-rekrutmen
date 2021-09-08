@@ -63,7 +63,7 @@
               <div class="flex sm:justify-center">
                 <div class="intro-x w-10 h-10 image-fit">
                   <img alt="Midone Tailwind HTML Admin Template" class="rounded-full"
-                    src="{{ asset('template/dist/images/preview-11.jpg') }}">
+                    src="{{ asset('img/'.$user->pelamar->foto) }}">
                 </div>
               </div>
             </td>

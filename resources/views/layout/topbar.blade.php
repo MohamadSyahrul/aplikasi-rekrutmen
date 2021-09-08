@@ -114,7 +114,11 @@
             <!-- BEGIN: Account Menu -->
             <div class="intro-x dropdown w-8 h-8 relative">
                 <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in">
-                    <img alt="Midone Tailwind HTML Admin Template" src="{{asset('template/dist/images/profile-12.jpg')}}">
+                    @if (Auth::user()->level == 'admin')
+                    <img alt="Midone Tailwind HTML Admin Template" src="{{ asset('template/dist/images/profile-12.jpg') }}">
+                    @elseif (Auth::user()->level == 'pelamar')
+                    <img alt="Midone Tailwind HTML Admin Template" src="{{ asset('img/'.Auth::user()->pelamar->foto ) }}">
+                    @endif
                 </div>
                 <div class="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
                     <div class="dropdown-box__content box bg-theme-38 text-white">

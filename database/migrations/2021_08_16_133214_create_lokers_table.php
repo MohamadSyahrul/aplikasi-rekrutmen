@@ -16,15 +16,15 @@ class CreateLokersTable extends Migration
         Schema::create('lokers', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('detail');
+            $table->text('detail');
             $table->string('tingkat_pendidikan');
             $table->string('jenis_kelamin');
             $table->string('umur');
             $table->string('status_kerja');
-            $table->integer('gaji');
+            $table->string('gaji');
             $table->date('batas_lamaran');
             $table->text('deskripsi');
-            $table->string('persyaratan');
+            $table->text('persyaratan');
             $table->timestamps();
         });
     }

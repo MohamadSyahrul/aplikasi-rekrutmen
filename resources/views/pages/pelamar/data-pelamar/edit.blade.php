@@ -30,7 +30,7 @@
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
           <h2 class="font-medium text-base mr-auto">Perbarui Data User</h2>
         </div>
-        <form action="{{ route('pelamarDataPelamar.update', $data->pelamar->id) }}" method="POST">
+        <form action="{{ route('pelamarDataPelamar.update', $data->pelamar->id) }}" method="POST" enctype="multipart/form-data">
           @method('PATCH')
           @csrf
           <div class="p-5" id="horizontal-form">
@@ -78,6 +78,11 @@
                     <input name="no_telp" type="text" class="input w-full border my-2" placeholder="Nomor Telepon"
                       value="{{ old('no_telp') ?? $data->pelamar->no_telp }}">
                   </div>
+                  <div class="flex flex-col sm:flex-row items-center">
+                    <label class="w-full lg:w-40 sm:w-20 sm:text-left">Foto Profil</label>
+                    <input type="file" class="input w-full border my-2" name="foto" placeholder="Upload Foto Profil">
+                  </div>
+
                 </div>
                 <div class="flex-1 p-5">
                   <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">

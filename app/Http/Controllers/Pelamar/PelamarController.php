@@ -33,6 +33,7 @@ class pelamarController extends Controller
             'smp' => 'required',
             'sma' => 'required',
             'perguruan_tinggi' => 'required',
+            'foto' => 'required',
         ]);
 
         // $data = pelamar::findOrFail($id)->update($attr);
@@ -52,13 +53,22 @@ class pelamarController extends Controller
         }
         $data->no_telp = $request->no_telp;
 
+        if ($request->hasFile('foto')) {
+            $nm = $request->foto;
+            $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
+            $data->foto = $namaFile;
+            $nm->move(public_path() . '/img', $namaFile);
+        }else{
+            $data->foto = 'default.png';
+        }
+
         $data->update();
 
         $pendidikan = Pendidikan::where('pelamar_id', $id)
             ->update([
                 'sd' => $request->sd,
                 'smp' => $request->smp,
-                'smp' => $request->smp,
+                'sma' => $request->sma,
                 'perguruan_tinggi' => $request->perguruan_tinggi
             ]);
 

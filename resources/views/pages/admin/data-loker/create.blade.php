@@ -40,13 +40,15 @@
             <div class="preview">
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Pekerjaan</label>
-                <input name="nama" type="text" class="input w-full border mt-2 flex-1" placeholder="Nama"
+                <input name="nama" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukan Nama Pekerjaan"
                   value="{{ old('nama') }}">
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Detail</label>
-                <input name="detail" type="text" class="input w-full border mt-2 flex-1" placeholder="Detail"
-                  value="{{ old('detail') }}">
+                <div class="input w-full h-auto mt-2 flex-1">
+                  <textarea class="summernote" name="detail"
+                    placeholder="detail">{{ old('detail') }}</textarea>
+                </div>
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Tingkat Pendidikan</label>
@@ -74,7 +76,7 @@
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Gaji</label>
-                <input name="gaji" type="number" class="input w-full border mt-2 flex-1" placeholder="Gaji"
+                <input name="gaji" type="text" class="input w-full border mt-2 flex-1" placeholder="Gaji"
                   value="{{ old('gaji') }}">
               </div>
               <div class="flex flex-col sm:flex-row items-center">
@@ -91,8 +93,10 @@
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Persyaratan</label>
-                <input name="persyaratan" type="text" class="input w-full border mt-2 flex-1" placeholder="Persyaratan"
-                  value="{{ old('persyaratan') }}">
+                <div class="input w-full h-auto mt-2 flex-1">
+                  <textarea class="summernote" name="persyaratan"
+                    placeholder="Persyaratan">{{ old('persyaratan') }}</textarea>
+                </div>
               </div>
               <div class="flex sm:flex-row items-center mt-5">
                 <button type="submit" class="button bg-theme-1 text-white">Tambah</button>
