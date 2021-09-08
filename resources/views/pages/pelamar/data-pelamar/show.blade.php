@@ -53,6 +53,11 @@
         </div>
       </div>
       <div class="w-full sm:w-auto flex items-center justify-center m-3 sm:mt-0">
+        <a href="{{ route('pelamarDataPelamar.download', Auth::user()->pelamar->id) }}">
+          <button class="button text-white bg-theme-1 shadow-md mr-2">Download Berkas</button>
+        </a>
+      </div>
+      <div class="w-full sm:w-auto flex items-center justify-center m-3 sm:mt-0">
         <a href="{{ route('pelamarDataPelamar.edit', Auth::user()->id) }}">
           <button class="button text-white bg-theme-1 shadow-md mr-2">Ubah Data</button>
         </a>

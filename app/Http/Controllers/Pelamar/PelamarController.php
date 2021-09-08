@@ -23,7 +23,9 @@ class pelamarController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
+            'berkas' => 'required|file',
             'nama' => 'required|string|max:255',
             'tempat_lahir' => 'required|string|max:255',
             'tgl_lahir' => 'required',
@@ -37,6 +39,12 @@ class pelamarController extends Controller
 
         // $data = pelamar::findOrFail($id)->update($attr);
 
+        $file = $request->file('berkas');
+        $fileName = $file->getClientOriginalName();
+        $filePath = base_path() . '/public/uploads/' . $fileName;
+        $fileMimeType = $file->getMimeType();
+
+        $file->move('uploads', $fileName);
 
         $date = strtotime($request->tgl_lahir);
         $date_format = date('Y-m-d', $date);
@@ -51,6 +59,9 @@ class pelamarController extends Controller
             $data->jenis_kelamin = 'Perempuan';
         }
         $data->no_telp = $request->no_telp;
+        $data->file = $fileName;
+        $data->path = $filePath;
+        $data->mime = $fileMimeType;
 
         $data->update();
 
@@ -63,5 +74,11 @@ class pelamarController extends Controller
             ]);
 
         return redirect(route('pelamarDataPelamar.show'))->with('success', 'Data User berhasil Diubah');
+    }
+
+    public function download($id)
+    {
+        $pelamar = Pelamar::findOrFail($id);
+        return response()->download($pelamar->path, $pelamar->file, ['Content-Type:' . $pelamar->mime]);
     }
 }

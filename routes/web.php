@@ -40,6 +40,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {
     Route::get('dataPelamar', 'Pelamar\PelamarController@show')->name('pelamarDataPelamar.show');
+    Route::get('dataPelamar/download/{id}', 'Pelamar\PelamarController@download')->name('pelamarDataPelamar.download');
     Route::get('dataPelamar/{id}', 'Pelamar\PelamarController@edit')->name('pelamarDataPelamar.edit');
     Route::patch('dataPelamar/{id}', 'Pelamar\PelamarController@update')->name('pelamarDataPelamar.update');
 

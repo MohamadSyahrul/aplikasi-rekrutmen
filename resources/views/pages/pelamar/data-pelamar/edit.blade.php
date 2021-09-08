@@ -30,7 +30,8 @@
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
           <h2 class="font-medium text-base mr-auto">Perbarui Data User</h2>
         </div>
-        <form action="{{ route('pelamarDataPelamar.update', $data->pelamar->id) }}" method="POST">
+        <form action="{{ route('pelamarDataPelamar.update', $data->pelamar->id) }}" method="POST"
+          enctype="multipart/form-data">
           @method('PATCH')
           @csrf
           <div class="p-5" id="horizontal-form">
@@ -45,6 +46,18 @@
                 <input name="email" type="email" class="input w-full border my-2" placeholder="example@gmail.com"
                   value="{{ old('email') ?? $data->email }}" disabled>
               </div>
+              <div class="flex flex-col sm:flex-row items-center">
+                <label class=" w-full lg:w-40 sm:w-20 sm:text-left">Upload Berkas</label>
+                <div>
+                  <input name="berkas" type="file" class="input w-full border my-2" placeholder="Upload Disini">
+                  <p class="text-sm text-gray-500">
+                    Silakan cek berkas apa saja yang dibutuhkan untuk melamar pekerjaan. Berkas yang dikumpulkan dijadikan
+                    satu lalu dikompress dalam format
+                    Zip / Rar
+                  </p>
+                </div>
+              </div>
+
               <div class="md:flex sm:flex md:space-x-4 sm:space-x-4">
                 <div class="flex-1 p-5">
                   <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
@@ -105,6 +118,7 @@
                       value="{{ old('perguruan_tinggi') ?? $data->pelamar->pendidikan->perguruan_tinggi }}">
                   </div>
                 </div>
+
               </div>
               <div class="flex sm:flex-row items-center mt-5">
                 <button type="submit" class="button bg-theme-1 text-white">Simpan</button>
@@ -159,8 +173,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-input">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ Helper::formatCode('
                                     <div>
                                         <label>Input Text</label>
                                         <input type="text" class="input w-full border mt-2" placeholder="Input text">
@@ -183,8 +197,8 @@
                                         <input type="text" class="input w-full border mt-2 bg-gray-100 cursor-not-allowed" placeholder="Disabled" disabled>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -212,14 +226,14 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-input-sizing">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ Helper::formatCode('
                                     <input type="text" class="input input--sm w-full border" placeholder="Input small">
                                     <input type="text" class="input w-full border mt-2" placeholder="Input normal">
                                     <input type="text" class="input input--lg w-full border mt-2" placeholder="Input large">
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -238,7 +252,8 @@
           <div class="preview">
             <div class="relative">
               <div
-                class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">@
+                class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                @
               </div>
               <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Email">
             </div>
@@ -250,7 +265,8 @@
             </div>
             <div class="relative mt-2">
               <div
-                class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">@
+                class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                @
               </div>
               <input type="text" class="input px-12 w-full border col-span-4" placeholder="Price">
               <div
@@ -265,8 +281,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-input-groups">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div class="relative">
                                         <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">@</div>
                                         <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Email">
@@ -281,8 +297,8 @@
                                         <div class="absolute top-0 right-0 rounded-r w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">.00</div>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -328,8 +344,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-input-state">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div>
                                         <label>Input Success</label>
                                         <input type="text" class="input w-full border border-theme-9 mt-2" placeholder="Input text">
@@ -352,8 +368,8 @@
                                         <div class="text-theme-6 mt-2">This field is required</div>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -401,8 +417,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-select-options">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div class="flex flex-col sm:flex-row items-center">
                                         <div class="sm:mt-2">
                                             <select class="input input--sm border mr-2">
@@ -427,8 +443,8 @@
                                         </div>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -468,8 +484,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-vertical-form">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div>
                                         <label>Email</label>
                                         <input type="email" class="input w-full border mt-2" placeholder="example@gmail.com">
@@ -484,8 +500,8 @@
                                     </div>
                                     <button type="button" class="button bg-theme-1 text-white mt-5">Login</button>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -516,16 +532,16 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-inline-form">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div class="grid grid-cols-12 gap-2">
                                         <input type="text" class="input w-full border col-span-4" placeholder="Input inline 1">
                                         <input type="text" class="input w-full border col-span-4" placeholder="Input inline 2">
                                         <input type="text" class="input w-full border col-span-4" placeholder="Input inline 3">
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -588,8 +604,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-checkbox-switch">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div>
                                         <label>Vertical Checkbox</label>
                                         <div class="flex items-center text-gray-700 mt-2">
@@ -629,8 +645,8 @@
                                         </div>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
@@ -650,13 +666,13 @@
             <div>
               <label>Vertical Radio Button</label>
               <div class="flex items-center text-gray-700 mt-2">
-                <input type="radio" class="input border mr-2" id="vertical-radio-chris-evans" name="vertical_radio_button"
-                  value="vertical-radio-chris-evans">
+                <input type="radio" class="input border mr-2" id="vertical-radio-chris-evans"
+                  name="vertical_radio_button" value="vertical-radio-chris-evans">
                 <label class="cursor-pointer select-none" for="vertical-radio-chris-evans">Chris evans</label>
               </div>
               <div class="flex items-center text-gray-700 mt-2">
-                <input type="radio" class="input border mr-2" id="vertical-radio-liam-neeson" name="vertical_radio_button"
-                  value="vertical-radio-liam-neeson">
+                <input type="radio" class="input border mr-2" id="vertical-radio-liam-neeson"
+                  name="vertical_radio_button" value="vertical-radio-liam-neeson">
                 <label class="cursor-pointer select-none" for="vertical-radio-liam-neeson">Liam Neeson</label>
               </div>
               <div class="flex items-center text-gray-700 mt-2">
@@ -692,8 +708,8 @@
             </button>
             <div class="overflow-y-auto h-64 mt-3">
               <pre class="source-preview" id="copy-radio">
-                                                                                                                                                                                                                                                                  <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
-                                                                                                                                                                                                                                                                      {{ \Helper::formatCode('
+                                                                                                                                                                                                                                                                                                                                        <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10">
+                                                                                                                                                                                                                                                                                                                                            {{ \Helper::formatCode('
                                     <div>
                                         <label>Vertical Radio Button</label>
                                         <div class="flex items-center text-gray-700 mt-2">
@@ -727,8 +743,8 @@
                                         </div>
                                     </div>
                                 ') }}
-                                                                                                                                                                                                                                                                  </code>
-                                                                                                                                                                                                                                                              </pre>
+                                                                                                                                                                                                                                                                                                                                        </code>
+                                                                                                                                                                                                                                                                                                                                    </pre>
             </div>
           </div>
         </div>
