@@ -15,7 +15,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $data = Pengumuman::paginate(6);
+        $data = Pengumuman::paginate(3);
         // dd($data);
         return view('pages.pelamar.pengumuman.index', compact('data'));
     }

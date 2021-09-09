@@ -14,7 +14,7 @@
   </div>
   {{-- Jenis 1 --}}
   <div class="intro-y grid grid-cols-12 gap-6 mt-5">
-    <!-- BEGIN: Blog Layout -->
+    <!-- BEGIN: Pengumuman -->
     @foreach ($data as $pengumuman)
       <div class="intro-y col-span-12 md:col-span-6 xl:col-span-4 box">
         <div class="flex items-center border-b border-gray-200 px-5 py-4">
@@ -42,52 +42,10 @@
         </div>
       </div>
     @endforeach
-    <!-- END: Blog Layout -->
+    <!-- END: Pengumuman -->
     <!-- BEGIN: Pagination -->
     <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-no-wrap items-center">
-      <ul class="pagination">
-        <li>
-          <a class="pagination__link" href="">
-            <i class="w-4 h-4" data-feather="chevrons-left"></i>
-          </a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">
-            <i class="w-4 h-4" data-feather="chevron-left"></i>
-          </a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">...</a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">1</a>
-        </li>
-        <li>
-          <a class="pagination__link pagination__link--active" href="">2</a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">3</a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">...</a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">
-            <i class="w-4 h-4" data-feather="chevron-right"></i>
-          </a>
-        </li>
-        <li>
-          <a class="pagination__link" href="">
-            <i class="w-4 h-4" data-feather="chevrons-right"></i>
-          </a>
-        </li>
-      </ul>
-      <select class="w-20 input box mt-3 sm:mt-0">
-        <option>10</option>
-        <option>25</option>
-        <option>35</option>
-        <option>50</option>
-      </select>
+      {{ $data->links('vendor.pagination.tailwind') }}
     </div>
     <!-- END: Pagination -->
   </div>

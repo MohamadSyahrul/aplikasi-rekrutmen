@@ -64,4 +64,5 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
 
     Route::get('pengumuman', 'Pelamar\PengumumanController@index')->name('pelamarPengumuman.index');
     Route::get('pengumuman/{id}', 'Pelamar\PengumumanController@show')->name('pelamarPengumuman.show');
+    Route::get('pengumuman/download/{id}', 'Pelamar\PengumumanController@download')->name('pelamarPengumuman.download');
 });

@@ -9,8 +9,16 @@
 @section('content')
   <div class="intro-y flex items-center mt-8">
     <h2 class="text-lg font-medium mr-auto">Pengumuman</h2>
+    @if ($data->file)
+      <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+        <a href="{{ route('pelamarPengumuman.download', $data->id) }}"
+          class=" button text-white bg-theme-1 shadow-md mr-2">
+          Download Berkas
+        </a>
+      </div>
+    @endif
   </div>
-  <!-- BEGIN: Peraturan -->
+  <!-- BEGIN: Pengumuman -->
   <div class="intro-y box overflow-hidden mt-5">
     <div class="border-b border-gray-200 text-center sm:text-left">
       <div class="px-5 py-1 sm:px-20 sm:py-20">
@@ -25,5 +33,5 @@
       </div>
     </div>
   </div>
-  <!-- END: Peraturan -->
+  <!-- END: Pengumuman -->
 @endsection
