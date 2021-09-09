@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Pelamar;
 
-use App\Http\Controllers\Controller;
 use App\Kuis;
+use App\Lamaran;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class KuisController extends Controller
 {
@@ -15,7 +17,7 @@ class KuisController extends Controller
      */
     public function index(Kuis $kuis)
     {
-        $data = $kuis->get();
+        $data = Lamaran::where('pelamar_id', Auth::user()->pelamar->id)->get();
         return view('pages.pelamar.kuis.index', compact('data'));
     }
 

@@ -12,4 +12,9 @@ class Kuis extends Model
     {
         return $this->hasMany(Soal::class);
     }
+
+    public function loker()
+    {
+        return $this->belongsTo(Loker::class);
+    }
 }

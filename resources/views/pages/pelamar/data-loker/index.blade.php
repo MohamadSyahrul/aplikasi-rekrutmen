@@ -50,7 +50,7 @@
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
                 </a>
-                <a class="flex items-bottom mr-3" href="{{ route('pelamarLowonganKerja.upload', $loker->id) }}">
+                <a class="flex items-bottom mr-3" href="{{ route('pelamarLowonganKerja.lamar', $loker->id) }}">
                   <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
                   Lamar
                 </a>

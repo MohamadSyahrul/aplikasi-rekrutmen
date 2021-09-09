@@ -17,4 +17,9 @@ class Loker extends Model
     {
         return $this->hasOne(Pengumuman::class);
     }
+
+    public function kuis()
+    {
+        return $this->hasOne(Kuis::class);
+    }
 }

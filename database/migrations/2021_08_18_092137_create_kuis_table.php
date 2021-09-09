@@ -20,6 +20,7 @@ class CreateKuisTable extends Migration
             $table->time('waktu_mulai')->nullable();
             $table->time('waktu_selesai')->nullable();
             $table->time('durasi')->nullable();
+            $table->unsignedBigInteger('loker_id');
             $table->timestamps();
         });
     }

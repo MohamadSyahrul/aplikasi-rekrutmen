@@ -20,29 +20,45 @@
           <th class="border-b-2 whitespace-no-wrap">Nama Kuis</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Tanggal</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Durasi</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">Loker</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($data as $kuis)
+        @foreach ($data as $lamaran)
           <tr>
             <td class="border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $kuis->nama }}</div>
+              <div class="font-medium whitespace-no-wrap">
+                {{ $lamaran->loker->kuis->nama ?? 'Belum ada kuis' }}</div>
             </td>
             <td class="text-center border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $kuis->tgl_kuis }}</div>
+              <div class="font-medium whitespace-no-wrap">
+                {{ $lamaran->loker->kuis->tgl_kuis ?? 'Tanggal belum ditentukan' }}</div>
             </td>
             <td class="text-center border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $kuis->durasi }}</div>
+              <div class="font-medium whitespace-no-wrap">
+                {{ $lamaran->loker->kuis->durasi ?? 'Durasi belum ditentukan' }}</div>
             </td>
-            <td class="border-b w-5">
-              <div class="flex sm:justify-center items-center">
-                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('pelamarKuis.show', $kuis->id) }}">
-                  <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                  Kerjakan
-                </a>
-              </div>
+            <td class="text-center border-b">
+              <div class="font-medium whitespace-no-wrap">{{ $lamaran->loker->nama }}</div>
             </td>
+            @if ($lamaran->loker->kuis != null)
+              <td class="border-b w-5">
+                <div class="flex sm:justify-center items-center">
+                  <a class="flex items-bottom mr-3 text-theme-1"
+                    href="{{ route('pelamarKuis.show', $lamaran->loker->kuis->id) }}">
+                    <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
+                    Kerjakan
+                  </a>
+                </div>
+              </td>
+            @else
+              <td class="border-b w-5">
+                <div class="flex sm:justify-center items-center">
+                  <i data-feather="Close" class="w-4 h-4 mr-1"></i>
+                  Tunggu
+                </div>
+            @endif
           </tr>
         @endforeach
       </tbody>
