@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Pelamar;
+use App\Pendidikan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -58,6 +59,10 @@ class PelamarController extends Controller
 
         $pelamar = Pelamar::create([
             'user_id' => $data->id
+        ]);
+
+        $pendidikan = Pendidikan::create([
+            'pelamar_id' => $pelamar->id
         ]);
 
         return redirect('dataPelamar')->with('success', 'User berhasil ditambahkan');
