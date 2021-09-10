@@ -32,7 +32,7 @@
       <!-- BEGIN: Horizontal Form -->
       <div class="intro-y box">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
-          <h2 class="font-medium text-base mr-auto">Data Lowongan Kerja</h2>
+          <h2 class="font-medium text-base mr-auto">Data Pengalaman Kerja</h2>
         </div>
         <form action="{{ route('pekerjaan.store') }}" method="POST">
           @csrf

@@ -46,12 +46,12 @@
         </div>
         <div class="accordion p-5">
           <div class="accordion__pane active border border-gray-200 p-4">
-            <a href="javascript:;" class="accordion__pane__toggle font-medium block">Nama</a>
+            <a href="javascript:;" class="accordion__pane__toggle font-medium block">Nama Pekerjaan</a>
             <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ $data->nama }}</div>
           </div>
           <div class="accordion__pane border border-gray-200 p-4 mt-3">
             <a href="javascript:;" class="accordion__pane__toggle font-medium block">Detail</a>
-            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ $data->detail }}</div>
+            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{!! $data->detail !!}</div>
           </div>
           <div class="accordion__pane border border-gray-200 p-4 mt-3">
             <a href="javascript:;" class="accordion__pane__toggle font-medium block">Status Kerja</a>
@@ -59,7 +59,7 @@
           </div>
           <div class="accordion__pane border border-gray-200 p-4 mt-3">
             <a href="javascript:;" class="accordion__pane__toggle font-medium block">Gaji</a>
-            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ 'Rp ' . $data->gaji }}</div>
+            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ $data->gaji }}</div>
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@
           </div>
           <div class="accordion__pane border border-gray-200 p-4 mt-3">
             <a href="javascript:;" class="accordion__pane__toggle font-medium block">Persyaratan</a>
-            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ $data->persyaratan }}</div>
+            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{!! $data->persyaratan !!}</div>
           </div>
         </div>
       </div>

@@ -62,8 +62,8 @@
             <td class="text-center border-b">
               <div class="flex sm:justify-center">
                 <div class="intro-x w-10 h-10 image-fit">
-                  <img alt="Midone Tailwind HTML Admin Template" class="rounded-full"
-                    src="{{ asset('template/dist/images/preview-11.jpg') }}">
+                  <img alt="profile" class="rounded-full"
+                    src="{{ asset('img/'.$user->pelamar->foto) }}">
                 </div>
               </div>
             </td>
@@ -80,7 +80,7 @@
                   Detail
                 </a>
                 <a class="flex items-center mr-3" href="{{ route('dataPelamar.edit', $user->id) }}">
-                  <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit
+                  <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Ubah
                 </a>
                 <form action="{{ route('dataPelamar.destroy', $user->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
@@ -88,7 +88,7 @@
                   @method('DELETE')
                   <button type="submit">
                     <div class="flex items-center text-theme-6"><i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                      Delete
+                      Hapus
                     </div>
                   </button>
                 </form>

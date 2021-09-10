@@ -20,6 +20,7 @@ class CreatePelamarsTable extends Migration
             $table->date('tgl_lahir')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('no_telp')->nullable();
+            $table->text('foto')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

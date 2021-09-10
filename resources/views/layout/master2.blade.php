@@ -22,16 +22,18 @@
                 <div class="hidden xl:flex flex-col min-h-screen">
                     <a href="" class="-intro-x flex items-center pt-5">
                         <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{asset('template/dist/images/logo.svg')}}">
-                        <span class="text-white text-lg ml-3"> Mid<span class="font-medium">One</span> </span>
+                        <span class="text-white text-lg ml-3">Rek<span class="font-medium">Rutmen</span> </span>
                     </a>
                     <div class="my-auto">
-                        <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{asset('template/dist/images/illustration.svg')}}">
+                        <img alt="Midone Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{asset('template/dist/images/image22.svg')}}">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            A few more clicks to 
+                            Selamat Datang 
                             <br>
-                            sign in to your account.
+                            di Aplikasi Rekrutmen Pegawai
+                            <br>
+                            CV Juna Network Indonesia
                         </div>
-                        <div class="-intro-x mt-5 text-lg text-white">Manage all your e-commerce accounts in one place</div>
+                        <div class="-intro-x mt-5 text-lg text-white">Try to register yourself to pursue your career in this company.</div>
                     </div>
                 </div>
                 <!-- END: Login Info -->
