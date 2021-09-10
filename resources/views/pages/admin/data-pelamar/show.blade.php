@@ -17,7 +17,7 @@
       <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
         <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
           <img alt="Midone Laravel Admin Dashboard Starter Kit" class="rounded-full"
-            src="{{ asset('template/dist/images/preview-11.jpg') }}">
+            src="{{  asset('img/'.$data->pelamar->foto) }}">
           <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-theme-1 rounded-full p-2">
             <i class="w-4 h-4 text-white" data-feather="camera"></i>
           </div>
