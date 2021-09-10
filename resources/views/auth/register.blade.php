@@ -8,7 +8,7 @@
         <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
             Sign Up
         </h2>
-        <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">Selamat Datang Di Sistem Penjaminan Mutu Internal Politeknik Negeri Banyuwangi</div>
+        <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">Selamat Datang di Aplikasi Rekrutmen Pegawai CV Juna Network Indonesia</div>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
                 <div class="intro-x mt-8">

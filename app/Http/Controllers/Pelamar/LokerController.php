@@ -40,16 +40,16 @@ class LokerController extends Controller
         $lamaran = Lamaran::where('loker_id', $loker->id)
             ->where('pelamar_id', Auth::user()->pelamar->id)->first();
 
-        if ($lamaran == NULL) {
-            $lamaran = Lamaran::create([
-                'tanggal_unggah' => Carbon::now(),
-                'loker_id' => $loker->id,
-                'pelamar_id' => Auth::user()->pelamar->id
-            ]);
-            return redirect(route('pelamarLowonganKerja.index'))->with('success', 'Lamaran anda berhasil dibuat');
-        } else {
-            return redirect(route('pelamarLowonganKerja.index'))->with('success', 'Lamaran anda sudah ada');
-        }
+            if ($lamaran == NULL) {
+                $lamaran = Lamaran::create([
+                    'tanggal_unggah' => Carbon::now(),
+                    'loker_id' => $loker->id,
+                    'pelamar_id' => Auth::user()->pelamar->id
+                ]);
+                return redirect(route('pelamarLowonganKerja.index'))->with('success', 'Lamaran anda berhasil dibuat');
+            } else {
+                return redirect(route('pelamarLowonganKerja.index'))->with('success', 'Lamaran anda sudah ada');
+            }
     }
 
     public function hapusLamaran($id)

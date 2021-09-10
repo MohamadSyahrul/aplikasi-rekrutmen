@@ -25,8 +25,8 @@
     <div class="flex flex-col lg:flex-row border-b border-gray-200 pb-5 -mx-5">
       <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
         <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-          <img alt="Midone Laravel Admin Dashboard Starter Kit" class="rounded-full"
-            src="{{ asset('template/dist/images/preview-11.jpg') }}">
+          <img alt="Foto Profil" class="rounded-full"
+            src="{{ asset('img/'.Auth::user()->pelamar->foto ) }}">
           <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-theme-1 rounded-full p-2">
             <i class="w-4 h-4 text-white" data-feather="camera"></i>
           </div>
@@ -184,7 +184,7 @@
                 <div class="flex sm:justify-center items-center mx-5 sm:mr-5">
                   <a class="flex items-bottom mr-3" href="{{ route('pekerjaan.edit', $pekerjaan->id) }}">
                     <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                    Edit
+                    Ubah
                   </a>
                   <form action="{{ route('pekerjaan.destroy', $pekerjaan->id) }}" method="post"
                     onsubmit="return confirm('Yakin hapus data ?')">
@@ -193,7 +193,7 @@
                     <button type="submit">
                       <div class="flex items-bottom text-theme-6" href="">
                         <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                        Delete
+                        Hapus
                       </div>
                     </button>
                   </form>

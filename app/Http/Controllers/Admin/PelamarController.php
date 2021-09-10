@@ -106,7 +106,9 @@ class PelamarController extends Controller
             'tempat_lahir' => 'required|string|max:255',
             'tgl_lahir' => 'required',
             'jenis_kelamin' => 'required',
-            'no_telp' => 'required'
+            'no_telp' => 'required',
+            'foto' => 'required',
+
         ]);
 
         // $data = pelamar::findOrFail($id)->update($attr);
@@ -119,11 +121,20 @@ class PelamarController extends Controller
         $data->tempat_lahir = $request->tempat_lahir;
         $data->tgl_lahir = $date_format;
         if ($request->jenis_kelamin == 1) {
-            $data->jenis_kelamin = 'Laki laki';
+            $data->jenis_kelamin = 'Pria';
         } elseif ($request->jenis_kelamin == 2) {
-            $data->jenis_kelamin = 'Perempuan';
+            $data->jenis_kelamin = 'Wanita';
         }
         $data->no_telp = $request->no_telp;
+
+        if ($request->hasFile('foto')) {
+            $nm = $request->foto;
+            $namaFile = time() . rand(100, 999) . "." . $nm->getClientOriginalExtension();
+            $data->foto = $namaFile;
+            $nm->move(public_path() . '/img', $namaFile);
+        }else{
+            $data->foto = 'default.png';
+        }
 
         $data->update();
 

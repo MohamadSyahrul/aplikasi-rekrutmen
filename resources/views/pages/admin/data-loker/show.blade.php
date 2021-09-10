@@ -58,7 +58,7 @@
           </div>
           <div class="accordion__pane border border-gray-200 p-4 mt-3">
             <a href="javascript:;" class="accordion__pane__toggle font-medium block">Gaji</a>
-            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ 'Rp ' . $data->gaji }}</div>
+            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">{{ $data->gaji }}</div>
           </div>
         </div>
       </div>

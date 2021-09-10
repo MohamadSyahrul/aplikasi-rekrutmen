@@ -8,7 +8,7 @@ Login
     <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
         Sign In
     </h2>
-    <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">Selamat Datang Di Aplikasi Rekrutmen Pegawai</div>
+    <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">Selamat Datang di Aplikasi Rekrutmen Pegawai CV Juna Network Indonesia</div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
         <div class="intro-x mt-8">
@@ -38,10 +38,6 @@ Login
             <a href="{{ route('register') }}" class="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">Sign up</a>
         </div>
     </form>
-    <div class="intro-x mt-10 xl:mt-24 text-gray-700 text-center xl:text-left">
-        By signin up, you agree to our
-        <br>
-        <a class="text-theme-1" href="">Terms and Conditions</a> & <a class="text-theme-1" href="">Privacy Policy</a>
-    </div>
+   
 </div>
 @endsection
