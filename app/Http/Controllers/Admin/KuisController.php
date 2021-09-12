@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Kuis;
+use App\Loker;
 use Illuminate\Http\Request;
 
 class KuisController extends Controller
@@ -31,7 +32,8 @@ class KuisController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.kuis.create');
+        $loker = Loker::all();
+        return view('pages.admin.kuis.create', compact('loker'));
     }
 
     /**
@@ -42,7 +44,20 @@ class KuisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $date = strtotime($data['tgl_kuis']);
+        $date2 = strtotime($data['waktu_mulai']);
+        $date3 = strtotime($data['waktu_selesai']);
+        $date4 = strtotime($data['durasi']);
+        $data['tgl_kuis'] = date('Y-m-d', $date);
+        $data['waktu_mulai'] = date('Y-m-d H:i:s', $date2);
+        $data['waktu_selesai'] = date('Y-m-d H:i:s', $date3);
+        $data['durasi'] = date('H:i:s', $date4);
+
+        // dd($data);
+        kuis::create($data);
+        return redirect(route('dataKuis.index'))->with('success', 'Data Kuis berhasil ditambahkan');
     }
 
     /**
@@ -53,7 +68,8 @@ class KuisController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Kuis::findOrFail($id);
+        return view('pages.admin.kuis.edit', compact('data'));
     }
 
     /**
@@ -92,6 +108,6 @@ class KuisController extends Controller
 
         $data->delete();
 
-        return redirect(route('dataKuis.index'))->with('success', 'Lowongan Kerja berhasil dihapus');
+        return redirect(route('dataKuis.index'))->with('success', 'Data Kuis berhasil dihapus');
     }
 }
