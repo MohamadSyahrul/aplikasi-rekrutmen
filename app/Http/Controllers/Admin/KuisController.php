@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Pelamar;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Kuis;
-use App\Soal;
 use Illuminate\Http\Request;
 
-class SoalController extends Controller
+class KuisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +15,13 @@ class SoalController extends Controller
      */
     public function index()
     {
+        $data = Kuis::all();
+        // $data = Soal::orderBy('kuis_id', 'desc')->groupBy('kuis_id')->get();
+        // $data2 = Soal::groupBy('kuis_id')
+        //                 ->selectRaw('sum(bobot_soal) as nilaiMax')
+        //                 ->get();
+        // dd($data);
+        return view('pages.admin.kuis.index', compact('data'));
     }
 
     /**
@@ -25,7 +31,7 @@ class SoalController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.kuis.create');
     }
 
     /**
@@ -36,41 +42,40 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data = Soal::where('kuis_id', $id)->get();
-        // dd($data[0]->kuis->durasi);
-        return view('pages.pelamar.soal.show', compact('data'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Soal $soal)
+    public function edit($id)
     {
-        //
+        $data = Kuis::findOrFail($id);
+        return view('pages.admin.kuis.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Soal $soal)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,11 +83,15 @@ class SoalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Soal $soal)
+    public function destroy($id)
     {
-        //
+        $data = Kuis::findOrFail($id);
+
+        $data->delete();
+
+        return redirect(route('dataKuis.index'))->with('success', 'Lowongan Kerja berhasil dihapus');
     }
 }

@@ -35,7 +35,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="side-menu {{ Request::is('kuis*') ? 'side-menu--active' : '' }}">
+      <a href="{{ url('dataKuis') }}" class="side-menu {{ Request::is('dataKuis*') ? 'side-menu--active' : '' }}">
         <div class="side-menu__icon"> <i data-feather="layers"></i> </div>
         <div class="side-menu__title"> Kuis </div>
       </a>

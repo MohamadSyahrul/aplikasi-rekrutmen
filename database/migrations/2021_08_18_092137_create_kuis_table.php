@@ -17,8 +17,8 @@ class CreateKuisTable extends Migration
             $table->id();
             $table->string('nama')->nullable();
             $table->date('tgl_kuis')->nullable();
-            $table->time('waktu_mulai')->nullable();
-            $table->time('waktu_selesai')->nullable();
+            $table->dateTime('waktu_mulai')->nullable();
+            $table->dateTime('waktu_selesai')->nullable();
             $table->time('durasi')->nullable();
             $table->unsignedBigInteger('loker_id');
             $table->timestamps();

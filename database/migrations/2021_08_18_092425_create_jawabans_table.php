@@ -17,6 +17,8 @@ class CreateJawabansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('lamaran_id');
             $table->unsignedBigInteger('soal_id');
+            $table->unsignedBigInteger('pelamar_id');
+            $table->string('jawaban');
             $table->timestamps();
         });
     }
