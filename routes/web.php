@@ -40,7 +40,13 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
     Route::resource('lamaran', 'Admin\LamaranController');
+<<<<<<< HEAD
     Route::resource('pengumuman', 'Admin\PengumumanController');
+=======
+    Route::resource('dataKuis', 'Admin\KuisController');
+    Route::resource('dataSoal', 'Admin\SoalController');
+    Route::resource('dataPenilaian', 'Admin\JawabanController');
+>>>>>>> origin/kuis
 });
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {
@@ -65,6 +71,8 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
 
     Route::get('soal/{id}', 'Pelamar\SoalController@show')->name('pelamarSoal.show');
     Route::post('soal', 'Pelamar\SoalController@store')->name('pelamarSoal.store');
+
+    Route::post('jawaban', 'Pelamar\JawabanController@store')->name('pelamar.jawabanStore');
 
     Route::get('pengumuman', 'Pelamar\PengumumanController@index')->name('pelamarPengumuman.index');
     Route::get('pengumuman/{id}', 'Pelamar\PengumumanController@show')->name('pelamarPengumuman.show');

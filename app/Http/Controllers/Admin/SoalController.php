@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Pelamar;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Kuis;
 use App\Soal;
 use Illuminate\Http\Request;
 
@@ -16,6 +15,7 @@ class SoalController extends Controller
      */
     public function index()
     {
+        //
     }
 
     /**
@@ -36,29 +36,27 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $data = Soal::where('kuis_id', $id)->get();
-        // dd($data[0]->kuis->durasi);
-        return view('pages.pelamar.soal.show', compact('data'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Soal $soal)
+    public function edit($id)
     {
         //
     }
@@ -67,10 +65,10 @@ class SoalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Soal $soal)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -78,11 +76,15 @@ class SoalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Soal  $soal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Soal $soal)
+    public function destroy($id)
     {
-        //
+        $data = Soal::findOrFail($id);
+
+        $data->delete();
+
+        return redirect(route('dataKuis.index'))->with('success', 'Data Kuis berhasil dihapus');
     }
 }

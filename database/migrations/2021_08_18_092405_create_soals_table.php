@@ -16,7 +16,7 @@ class CreateSoalsTable extends Migration
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
             $table->string('nama_soal')->nullable();
-            $table->string('bobot_soal')->nullable();
+            $table->integer('bobot_soal')->nullable();
             $table->string('soal')->nullable();
             $table->string('kunci_jawaban')->nullable();
             $table->unsignedBigInteger('kuis_id');

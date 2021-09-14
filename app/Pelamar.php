@@ -32,4 +32,9 @@ class Pelamar extends Model
     {
         return $this->hasMany(Pekerjaan::class);
     }
+
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class);
+    }
 }

@@ -43,36 +43,33 @@
       <thead>
         <tr>
           <th class="border-b-2 whitespace-no-wrap">Nama Tes</th>
+          <th class="border-b-2 whitespace-no-wrap">Loker</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Durasi</th>
-          <th class="border-b-2 text-center whitespace-no-wrap">Nilai Maksimal</th>
+          <th class="border-b-2 text-center whitespace-no-wrap">Jumlah</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>
         </tr>
       </thead>
       <tbody>
-        @foreach ($data as $kuis)
+        @foreach ($data as $ks)
           <tr>
             <td class="border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $user->username }}</div>
+              <div class="font-medium whitespace-no-wrap">{{$ks->nama}}</div>
             </td>
             <td class="border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $user->pelamar->nama }}</div>
+              <div class="font-medium whitespace-no-wrap">{{$ks->loker->nama}}</div>
             </td>
-            <td class="text-center border-b">
-              {{ $user->pelamar->jenis_kelamin }}
-            </td>
-            <td class="w-40 border-b text-center">
-              {{ $user->pelamar->no_telp }}
-            </td>
+            <td class="text-center border-b">{{$ks->durasi}}</td>
+            <td class="text-center border-b">{{$ks->loker->lamaran->count()}} Pelamar</td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('dataPelamar.show', $user->id) }}">
+                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('dataKuis.show', $ks->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
                 </a>
-                <a class="flex items-center mr-3" href="{{ route('dataPelamar.edit', $user->id) }}">
+                <a class="flex items-center mr-3" href="{{ route('dataKuis.edit', $ks->id) }}">
                   <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit
                 </a>
-                <form action="{{ route('dataPelamar.destroy', $user->id) }}" method="post"
+                <form action="{{ route('dataKuis.destroy', $ks->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf
                   @method('DELETE')
