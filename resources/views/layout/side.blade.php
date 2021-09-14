@@ -41,7 +41,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="side-menu {{ Request::is('penilaian*') ? 'side-menu--active' : '' }}">
+      <a href="{{ url('dataPenilaian') }}" class="side-menu {{ Request::is('dataPenilaian*') ? 'side-menu--active' : '' }}">
         <div class="side-menu__icon"> <i data-feather="pocket"></i> </div>
         <div class="side-menu__title"> Penilaian </div>
       </a>

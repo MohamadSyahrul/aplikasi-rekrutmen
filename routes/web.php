@@ -42,6 +42,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('lamaran', 'Admin\LamaranController');
     Route::resource('dataKuis', 'Admin\KuisController');
     Route::resource('dataSoal', 'Admin\SoalController');
+    Route::resource('dataPenilaian', 'Admin\JawabanController');
 });
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {

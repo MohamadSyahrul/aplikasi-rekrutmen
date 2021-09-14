@@ -4,27 +4,28 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lamaran extends Model
+class Penilaian extends Model
 {
     protected $guarded = ['id'];
 
-    public function loker()
+    public function kuis()
     {
-        return $this->belongsTo(Loker::class);
+        return $this->belongsTo(Kuis::class);
     }
-
+    
+    public function lamaran()
+    {
+        return $this->belongsTo(lamaran::class);
+    }
+    
     public function pelamar()
     {
         return $this->belongsTo(Pelamar::class);
     }
-
+    
     public function jawaban()
     {
         return $this->hasMany(Jawaban::class);
     }
-
-    public function penilaian()
-    {
-        return $this->belongsTo(Penilaian::class);
-    }
+    
 }

@@ -17,4 +17,9 @@ class Kuis extends Model
     {
         return $this->belongsTo(Loker::class);
     }
+
+    public function penilaian()
+    {
+        return $this->belongsTo(Penilaian::class);
+    }
 }
