@@ -40,6 +40,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
     Route::resource('lamaran', 'Admin\LamaranController');
+    Route::resource('pengumuman', 'Admin\PengumumanController');
 });
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {
@@ -52,9 +53,9 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
 
     // Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
     Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
-    
+
     Route::get('lowonganKerja/{id}', 'Pelamar\LokerController@show')->name('pelamarLowonganKerja.show');
-    
+
     Route::get('lowonganKerja/lamar/{id}', 'Pelamar\LokerController@lamar')->name('pelamarLowonganKerja.lamar');
 
     Route::delete('lowonganKerja/lamar/{id}', 'Pelamar\LokerController@hapusLamaran')->name('pelamarLowonganKerja.hapusLamaran');

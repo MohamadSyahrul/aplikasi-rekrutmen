@@ -1,6 +1,7 @@
 <a href="" class="intro-x flex items-center pl-5 pt-4">
 
-  <img alt="Midone Tailwind HTML Admin Template" class="w-6" src="{{ asset('template/dist/images/logo.svg') }}">
+  <img alt="Midone Tailwind HTML Admin Template" class="w-6"
+    src="{{ asset('template/dist/images/logo.svg') }}">
   <span class="hidden xl:block text-white text-lg ml-3"> Rek<span class="font-medium">Rutmen</span> </span>
 
 </a>
@@ -47,7 +48,8 @@
       </a>
     </li>
     <li>
-      <a href="#" class="side-menu {{ Request::is('pengumuman*') ? 'side-menu--active' : '' }}">
+      <a href="{{ url('pengumuman') }}"
+        class="side-menu {{ Request::is('pengumuman*') ? 'side-menu--active' : '' }}">
         <div class="side-menu__icon"> <i data-feather="volume-2"></i> </div>
         <div class="side-menu__title"> Pengumuman </div>
       </a>

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-  Tambah Data Pelamar
+  Tambah Data Lowongan Kerja
 @endsection
 @section('breadcrumb')
   Tambah Data Lowongan Kerja
@@ -40,14 +40,13 @@
             <div class="preview">
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Pekerjaan</label>
-                <input name="nama" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukan Nama Pekerjaan"
-                  value="{{ old('nama') }}">
+                <input name="nama" type="text" class="input w-full border mt-2 flex-1"
+                  placeholder="Masukan Nama Pekerjaan" value="{{ old('nama') }}">
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Detail</label>
                 <div class="input w-full h-auto mt-2 flex-1">
-                  <textarea class="summernote" name="detail"
-                    placeholder="detail">{{ old('detail') }}</textarea>
+                  <textarea class="summernote" name="detail" placeholder="detail">{{ old('detail') }}</textarea>
                 </div>
               </div>
               <div class="flex flex-col sm:flex-row items-center">
