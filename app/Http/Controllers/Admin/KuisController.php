@@ -96,7 +96,7 @@ class KuisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        // dd($request->all());
 
         $data = $request->all();
 
