@@ -65,9 +65,21 @@
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                <a class="flex items-center mr-3" href="{{ route('lamaran.download', $lamaran->id) }}">
+                <a data-toggle="modal" data-target="#download-modal"  class="flex items-bottom mr-3 text-theme-1" href="javascript:;">
                   <i data-feather="save" class="w-4 h-4 mr-1"></i> Berkas
                 </a>
+
+                <div class="modal" id="download-modal">
+                  <div class="modal__content">
+                      <div class="p-5 text-center"> <i data-feather="save" class="w-16 h-16 text-green-500 mx-auto mt-3"></i>
+                          <div class="text-3xl mt-5">Yakin Ingin Download?</div>
+                          <div class="text-gray-600 mt-2">Jika tidak yakin maka anda bisa membatalkan dengan mengklik tombol cancel !!</div>
+                      </div>
+                      <div class="px-5 pb-8 text-center"> <button type="button" data-dismiss="modal" class="button w-24 border text-gray-700 mr-1">Cancel</button> <a href="{{ route('lamaran.download', $lamaran->id) }}" class="button w-24 bg-green-500 text-white">Download</a> </div>
+                  </div>
+                </div>
+
+
                 <form action="{{ route('lamaran.destroy', $lamaran->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf
