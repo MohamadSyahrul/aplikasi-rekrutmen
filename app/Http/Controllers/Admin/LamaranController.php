@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Loker;
 use App\Lamaran;
+use App\Pelamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use App\User;
 
 class LamaranController extends Controller
 {
@@ -26,7 +30,13 @@ class LamaranController extends Controller
      */
     public function create()
     {
-        //
+        $pl = Pelamar::all();
+        $lk = Loker::all();
+
+        return view('pages.admin.lamaran.create',[
+            'pelamar' => $pl,
+            'loker' => $lk,
+        ]);
     }
 
     /**
@@ -37,7 +47,23 @@ class LamaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tanggal_unggah' => 'required',
+            'loker_id' => 'required',
+            'pelamar_id' => 'required'
+        ]);
+
+        $lm = $request->all();
+
+        $date = strtotime($lm['tanggal_unggah']);
+        $lm['tanggal_unggah'] = date('Y-m-d', $date);
+        $lamaran = Lamaran::create($lm);
+        if ($lamaran == NULL) {
+                    return redirect(route('lamaran.index'))->with('success', 'Lamaran anda berhasil dibuat');
+        } else {
+                return redirect(route('lamaran.index'))->with('success', 'Lamaran anda sudah ada');
+            }
+
     }
 
     /**
@@ -82,6 +108,8 @@ class LamaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Lamaran::findOrFail($id);
+        $item->delete();
+        return redirect()->route('lamaran.index');
     }
 }
