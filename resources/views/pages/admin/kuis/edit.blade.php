@@ -30,25 +30,25 @@
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">tanggal</label>
-                <input name="tgl_kuis" type="text" class="datepicker input w-full border mt-2 flex-1">
+                <input name="tgl_kuis" type="text" class="input w-full border mt-2 flex-1" value="{{$data->tgl_kuis}}" >
               </div>
               <div class="flex flex-col sm:flex-row items-center mt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_mulai</label>
-                <input name="waktu_mulai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_mulai" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->waktu_mulai}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_selesai</label>
-                <input name="waktu_selesai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_selesai" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->waktu_selesai}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">durasi</label>
-                <input name="durasi" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="durasi" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->durasi}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Loker</label>
                 <select  id="loker_id" name="loker_id" class="select2 w-full border mt-2 flex-1">
-                  @foreach($loker as $lk)
-                    <option  id="loker_id" name="loker_id" value="{{$lk->id}}">{{$lk->nama}}</option>
+                  @foreach($loker as $key => $lk)
+                    <option  id="loker_id[{{$key}}]" name="loker_id" value="{{$lk->id}}">{{$lk->nama}}</option>
                   @endforeach
                 </select>
               </div>
@@ -88,6 +88,7 @@
         <tr>
           <th class="border-b-2 whitespace-no-wrap">Nama Kuis</th>
           <th class="border-b-2 whitespace-no-wrap">Nama Soal</th>
+          <th class="border-b-2 whitespace-no-wrap">Soal</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>
         </tr>
       </thead>
@@ -99,6 +100,9 @@
             </td>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">{{$sl->nama_soal}}</div>
+            </td>
+            <td class="border-b">
+              <div class="font-medium whitespace-no-wrap">{{$sl->soal}}</div>
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
@@ -124,6 +128,7 @@
                     <h2 class="font-medium text-base mr-auto">Edit Data Soal</h2>
                 </div>
                 <form action="{{ route('dataSoal.update', $sl->id) }}" method="POST">
+                  @method('PATCH')
                   @csrf
                   <div class="p-5 cols-12 gap-4 row-gap-3">
                     <div class="col-span-12 sm:col-span-6"> 

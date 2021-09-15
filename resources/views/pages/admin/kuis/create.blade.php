@@ -61,8 +61,8 @@
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Loker</label>
                 <select  id="loker_id" name="loker_id" class="select2 w-full border mt-2 flex-1">
-                  @foreach($loker as $lk)
-                    <option  id="loker_id" name="loker_id" value="{{$lk->id}}">{{$lk->nama}}</option>
+                  @foreach($loker as $key => $lk)
+                    <option  id="loker_id[{{$key}}]" name="loker_id" value="{{$lk->id}}">{{$lk->nama}}</option>
                   @endforeach
                 </select>
               </div>

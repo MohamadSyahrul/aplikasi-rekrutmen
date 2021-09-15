@@ -57,7 +57,6 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
 
     Route::resource('pekerjaan', 'Pelamar\PekerjaanController');
 
-    // Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
     Route::get('lowonganKerja', 'Pelamar\LokerController@index')->name('pelamarLowonganKerja.index');
 
     Route::get('lowonganKerja/{id}', 'Pelamar\LokerController@show')->name('pelamarLowonganKerja.show');
@@ -77,4 +76,6 @@ Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function (
     Route::get('pengumuman', 'Pelamar\PengumumanController@index')->name('pelamarPengumuman.index');
     Route::get('pengumuman/{id}', 'Pelamar\PengumumanController@show')->name('pelamarPengumuman.show');
     Route::get('pengumuman/download/{id}', 'Pelamar\PengumumanController@download')->name('pelamarPengumuman.download');
+
+    Route::get('lowonganKerjaEmail', 'Pelamar\MailController@index');
 });

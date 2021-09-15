@@ -49,7 +49,7 @@
                 <div class="flex items-center mt-5">
                   <div class="border-l-2 border-theme-1 pl-4">
                     <a href="" class="font-medium">Detail Loker</a>
-                    <div class="text-gray-600">{{$loker->detail}}</div>
+                    <div class="text-gray-600">{!! $loker->detail !!}</div>
                   </div>
                 </div>
                 <div class="flex items-center mt-5">
