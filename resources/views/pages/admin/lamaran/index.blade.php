@@ -65,6 +65,9 @@
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
+                <a class="flex items-center mr-3" href="{{ route('lamaran.download', $lamaran->id) }}">
+                  <i data-feather="save" class="w-4 h-4 mr-1"></i> Berkas
+                </a>
                 <form action="{{ route('lamaran.destroy', $lamaran->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf

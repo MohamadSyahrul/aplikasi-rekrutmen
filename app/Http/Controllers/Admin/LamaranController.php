@@ -112,4 +112,10 @@ class LamaranController extends Controller
         $item->delete();
         return redirect()->route('lamaran.index');
     }
+
+    public function download($id)
+    {
+        $pelamar = Pelamar::findOrFail($id);
+        return response()->download($pelamar->path, $pelamar->file, ['Content-Type:' . $pelamar->mime]);
+    }
 }

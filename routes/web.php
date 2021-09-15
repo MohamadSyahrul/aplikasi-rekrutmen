@@ -40,6 +40,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
     Route::resource('lamaran', 'Admin\LamaranController');
+    Route::get('lamaran/download/{id}', 'Admin\LamaranController@download')->name('lamaran.download');
 
     Route::resource('pengumuman', 'Admin\PengumumanController');
 
