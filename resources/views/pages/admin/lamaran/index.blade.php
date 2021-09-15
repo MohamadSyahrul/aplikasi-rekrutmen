@@ -65,8 +65,6 @@
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                <a class="flex items-center mr-3" href="{{ route('dataPelamar.edit', $lamaran->id) }}"> <i
-                    data-feather="check-square" class="w-4 h-4 mr-1"></i> Ubah </a>
                 <form action="{{ route('lamaran.destroy', $lamaran->id) }}" method="post"
                   onsubmit="return confirm('Yakin hapus data ?')">
                   @csrf
