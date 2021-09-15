@@ -85,6 +85,16 @@ class KuisController extends Controller
         $data = Kuis::findOrFail($id);
         $soal = Soal::where('kuis_id', $id)->get();
         $loker = Loker::all();
+
+        $date = strtotime($data['tgl_kuis']);
+        $date2 = strtotime($data['waktu_mulai']);
+        $date3 = strtotime($data['waktu_selesai']);
+        $date4 = strtotime($data['durasi']);
+        $data['tgl_kuis'] = date('Y-m-d', $date);
+        $data['waktu_mulai'] = date('Y-m-d H:i:s', $date2);
+        $data['waktu_selesai'] = date('Y-m-d H:i:s', $date3);
+        $data['durasi'] = date('H:i:s', $date4);
+        
         return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal']));
     }
 

@@ -30,19 +30,19 @@
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">tanggal</label>
-                <input name="tgl_kuis" type="text" class="datepicker input w-full border mt-2 flex-1">
+                <input name="tgl_kuis" type="text" class="input w-full border mt-2 flex-1" value="{{$data->tgl_kuis}}" >
               </div>
               <div class="flex flex-col sm:flex-row items-center mt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_mulai</label>
-                <input name="waktu_mulai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_mulai" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->waktu_mulai}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_selesai</label>
-                <input name="waktu_selesai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_selesai" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->waktu_selesai}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">durasi</label>
-                <input name="durasi" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="durasi" type="text" data-timepicker="true" class="input w-full border mt-2 flex-1" value="{{$data->durasi}}">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Loker</label>
