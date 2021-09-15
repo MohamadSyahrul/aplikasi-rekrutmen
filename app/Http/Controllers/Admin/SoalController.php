@@ -36,7 +36,11 @@ class SoalController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        $data = $request->all();
+        Soal::create($data);
+
+        return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
     }
 
     /**
@@ -70,7 +74,12 @@ class SoalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $soal = Soal::findOrFail($id);
+        $data = $request->all();
+
+        $soal->update($data);
+        
+        return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Diupdate');
     }
 
     /**
@@ -85,6 +94,6 @@ class SoalController extends Controller
 
         $data->delete();
 
-        return redirect(route('dataKuis.index'))->with('success', 'Data Kuis berhasil dihapus');
+        return redirect(route('dataKuis.edit', $data->kuis_id))->with('success', 'Soal berhasil Dihapus');
     }
 }

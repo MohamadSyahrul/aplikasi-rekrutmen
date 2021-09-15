@@ -53,7 +53,11 @@
         @foreach ($data as $ks)
           <tr>
             <td class="border-b">
+              @if($ks->nama != null)
               <div class="font-medium whitespace-no-wrap">{{$ks->nama}}</div>
+              @else
+              <div class="font-medium whitespace-no-wrap">Nama Kuis Tidak Tercantumkan</div>
+              @endif
             </td>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">{{$ks->loker->nama}}</div>

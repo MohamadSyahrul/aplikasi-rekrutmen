@@ -34,6 +34,7 @@ class KuisController extends Controller
     public function create()
     {
         $loker = Loker::all();
+        // dd($loker);
         return view('pages.admin.kuis.create', compact('loker'));
     }
 
@@ -96,8 +97,6 @@ class KuisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
-
         $data = $request->all();
 
         $date = strtotime($data['tgl_kuis']);
