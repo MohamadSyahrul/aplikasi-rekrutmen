@@ -48,14 +48,14 @@ class KuisController extends Controller
     {
         $data = $request->all();
 
-        $date = strtotime($data['tgl_kuis']);
+        $date  = strtotime($data['tgl_kuis']);
         $date2 = strtotime($data['waktu_mulai']);
         $date3 = strtotime($data['waktu_selesai']);
         $date4 = strtotime($data['durasi']);
-        $data['tgl_kuis'] = date('Y-m-d', $date);
-        $data['waktu_mulai'] = date('Y-m-d H:i:s', $date2);
-        $data['waktu_selesai'] = date('Y-m-d H:i:s', $date3);
-        $data['durasi'] = date('H:i:s', $date4);
+        $data['tgl_kuis']       = date('Y-m-d', $date);
+        $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
+        $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
+        $data['durasi']         = date('H:i:s', $date4);
 
         // dd($data);
         kuis::create($data);
@@ -82,20 +82,27 @@ class KuisController extends Controller
      */
     public function edit($id)
     {
-        $data = Kuis::findOrFail($id);
-        $soal = Soal::where('kuis_id', $id)->get();
+        $data  = Kuis::findOrFail($id);
+        $soal  = Soal::where('kuis_id', $id)->get();
         $loker = Loker::all();
 
-        $date = strtotime($data['tgl_kuis']);
+        $a=0;
+        foreach ($soal as $row)  {
+            $getPilihan[$a] = json_decode($row->pilihanGanda);
+            $a++;
+        }
+        // dd($getPilihan);
+
+        $date  = strtotime($data['tgl_kuis']);
         $date2 = strtotime($data['waktu_mulai']);
         $date3 = strtotime($data['waktu_selesai']);
         $date4 = strtotime($data['durasi']);
-        $data['tgl_kuis'] = date('Y-m-d', $date);
-        $data['waktu_mulai'] = date('Y-m-d H:i:s', $date2);
-        $data['waktu_selesai'] = date('Y-m-d H:i:s', $date3);
-        $data['durasi'] = date('H:i:s', $date4);
+        $data['tgl_kuis']       = date('Y-m-d', $date);
+        $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
+        $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
+        $data['durasi']         = date('H:i:s', $date4);
         
-        return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal']));
+        return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal', 'getPilihan']));
     }
 
     /**
@@ -109,14 +116,14 @@ class KuisController extends Controller
     {
         $data = $request->all();
 
-        $date = strtotime($data['tgl_kuis']);
+        $date  = strtotime($data['tgl_kuis']);
         $date2 = strtotime($data['waktu_mulai']);
         $date3 = strtotime($data['waktu_selesai']);
         $date4 = strtotime($data['durasi']);
-        $data['tgl_kuis'] = date('Y-m-d', $date);
-        $data['waktu_mulai'] = date('Y-m-d H:i:s', $date2);
-        $data['waktu_selesai'] = date('Y-m-d H:i:s', $date3);
-        $data['durasi'] = date('H:i:s', $date4);
+        $data['tgl_kuis']       = date('Y-m-d', $date);
+        $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
+        $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
+        $data['durasi']         = date('H:i:s', $date4);
 
         $kuis = Kuis::findOrFail($id);
 

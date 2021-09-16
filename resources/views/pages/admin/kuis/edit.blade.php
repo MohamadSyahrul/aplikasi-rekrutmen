@@ -86,17 +86,23 @@
     <table class="table table-report table-report--bordered display datatable w-full">
       <thead>
         <tr>
-          <th class="border-b-2 whitespace-no-wrap">Nama Kuis</th>
+          <th class="border-b-2 whitespace-no-wrap">Tipe Soal</th>
           <th class="border-b-2 whitespace-no-wrap">Nama Soal</th>
           <th class="border-b-2 whitespace-no-wrap">Soal</th>
           <th class="border-b-2 text-center whitespace-no-wrap">Aksi</th>
         </tr>
       </thead>
       <tbody>
+
+        <?php $a=0; ?>
         @foreach ($soal as $sl)
           <tr>
             <td class="border-b">
-              <div class="font-medium whitespace-no-wrap">{{$sl->kuis->nama}}</div>
+              @if(empty($sl->pilihanGanda))
+              <div class="font-medium whitespace-no-wrap">Isian</div>
+              @else
+              <div class="font-medium whitespace-no-wrap">Pilihan Ganda</div>
+              @endif
             </td>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">{{$sl->nama_soal}}</div>
@@ -123,9 +129,11 @@
           </tr>
           
           <div class="modal" id="editSoal{{$sl->id}}">
+            @if(empty($sl->pilihanGanda))
+            <?php $getPilihan[$a]; $a++;?>
             <div class="modal__content">
                 <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
-                    <h2 class="font-medium text-base mr-auto">Edit Data Soal</h2>
+                    <h2 class="font-medium text-base mr-auto">Edit Data Soal Isian</h2>
                 </div>
                 <form action="{{ route('dataSoal.update', $sl->id) }}" method="POST">
                   @method('PATCH')
@@ -154,6 +162,66 @@
                   </div>
                 </form>
             </div>
+            @else
+            <div class="modal__content">
+                <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
+                    <h2 class="font-medium text-base mr-auto">Edit Data Soal Pilihan Ganda</h2>
+                </div>
+                <form action="{{ route('dataSoal.update', $sl->id) }}" method="POST">
+                  @method('PATCH')
+                  @csrf
+                  <div class="p-5 cols-12 gap-4 row-gap-3">
+                    <div class="col-span-12 sm:col-span-6"> 
+                      <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Soal</label>
+                      <input name="nama_soal" type="text" class="input w-full border mt-2 flex-1" value="{{$sl->nama_soal}}">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6"> 
+                      <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Bobot Soal</label>
+                      <input name="bobot_soal" type="text" class="input w-full border mt-2 flex-1" value="{{$sl->bobot_soal}}">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6"> 
+                      <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Soal</label>
+                      <input name="soal" type="text" class="input w-full border mt-2 flex-1" value="{{$sl->soal}}">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6"> 
+                      <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Pilihan</label>
+                    </div>
+                    <div class="relative">
+                      <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                        A
+                      </div>
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan A" name="pilihanGanda[0]" value="{{$getPilihan[$a][0]}}">
+                    </div>
+                    <div class="relative">
+                      <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                        B
+                      </div>
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan B" name="pilihanGanda[1]" value="{{$getPilihan[$a][1]}}">
+                    </div>
+                    <div class="relative">
+                      <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                        C
+                      </div>
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan C" name="pilihanGanda[2]" value="{{$getPilihan[$a][2]}}">
+                    </div>
+                    <div class="relative">
+                      <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                        D
+                      </div>
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan D" name="pilihanGanda[3]" value="{{$getPilihan[$a][3]}}">
+                    </div>
+                    <div class="col-span-12 sm:col-span-6"> 
+                      <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Kunci Jawaban</label>
+                      <input name="kunci_jawaban" type="text" class="input w-full border mt-2 flex-1" value="{{$sl->kunci_jawaban}}">
+                    </div>
+                    <input name="kuis_id" type="hidden" class="input w-full border mt-2 flex-1" value="{{$sl->kuis_id}}">
+                  </div>
+                  <div class="px-5 py-3 text-right border-t border-gray-200">
+                    <button type="submit" class="button w-20 bg-theme-1 text-white">Send</button>
+                  </div>
+                </form>
+            </div>
+            @endif
           </div>
         @endforeach
       </tbody>
@@ -180,6 +248,34 @@
               <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Soal</label>
               <input name="soal" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Soal">
             </div>
+            <div class="col-span-12 sm:col-span-6"> 
+              <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Pilihan</label>
+            </div>
+            <div class="relative">
+              <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                A
+              </div>
+              <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan A" name="pilihanGanda[0]">
+            </div>
+            <div class="relative">
+              <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                B
+              </div>
+              <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan B" name="pilihanGanda[1]">
+            </div>
+            <div class="relative">
+              <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                C
+              </div>
+              <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan C" name="pilihanGanda[2]">
+            </div>
+            <div class="relative">
+              <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
+                D
+              </div>
+              <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan D" name="pilihanGanda[3]">
+            </div>
+            <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5"><h4>*kosongkan Bila soal isian</h4></label>
             <div class="col-span-12 sm:col-span-6"> 
               <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Kunci Jawaban</label>
               <input name="kunci_jawaban" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Kunci Jawaban">
