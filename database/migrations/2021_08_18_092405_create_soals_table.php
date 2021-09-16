@@ -18,6 +18,7 @@ class CreateSoalsTable extends Migration
             $table->string('nama_soal')->nullable();
             $table->integer('bobot_soal')->nullable();
             $table->string('soal')->nullable();
+            $table->string('pilihanGanda')->nullable();
             $table->string('kunci_jawaban')->nullable();
             $table->unsignedBigInteger('kuis_id');
             $table->timestamps();

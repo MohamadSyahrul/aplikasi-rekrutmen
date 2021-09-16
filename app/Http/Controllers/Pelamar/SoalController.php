@@ -48,8 +48,13 @@ class SoalController extends Controller
     public function show($id)
     {
         $data = Soal::where('kuis_id', $id)->get();
-        // dd($data[0]->kuis->durasi);
-        return view('pages.pelamar.soal.show', compact('data'));
+        $a=0;
+        foreach ($data as $row)  {
+            $getPilihan[$a] = json_decode($row->pilihanGanda);
+            $a++;
+        }
+        // dd($getPilihan);
+        return view('pages.pelamar.soal.show', compact('data', 'getPilihan'));
     }
 
     /**

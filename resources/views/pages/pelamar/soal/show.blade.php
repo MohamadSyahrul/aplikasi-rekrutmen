@@ -38,11 +38,14 @@
         <div id="demo" class="font-large text-center text-lg"></div>
       </div>
       <div id="jawabanSoal" class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200">
+        <?php $a=0; ?>
         @foreach($data as $key => $dt)
         <div class="tab intro-y box lg:mt-5" id="<?= $dt->nama_soal ?>" style="display: none">
           <div class="flex items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">Soal Nomor {{$dt->nama_soal}}</h2>
           </div>
+          @if(empty($dt->pilihanGanda))
+          <?php $getPilihan[$a]; $a++;?>
           <div class="accordion p-5">
             <div class="accordion__pane active border border-gray-200 p-4">
               <a href="javascript:;" class="accordion__pane__toggle font-medium block">{{$dt->soal}}</a>
@@ -52,6 +55,22 @@
               <input name="soal_id[{{$key}}]" type='hidden' value='{{$dt->id}}'>
             </div>
           </div>
+          @else
+          <div class="accordion p-5">
+            <div class="accordion__pane active border border-gray-200 p-4">
+              <a href="javascript:;" class="accordion__pane__toggle font-medium block">{{$dt->soal}}</a>
+            </div>
+            <div class="accordion__pane__content mt-3 text-gray-700 leading-relaxed">
+              <div> <label>Pilih Salah Satu</label>
+                <div class="flex items-center text-gray-700 mt-2"> <input name="jawaban[{{$key}}]" type="radio" class="input border mr-2" id="vertical-checkbox-chris-evans" value="{{$getPilihan[$a][0]}}" > <label class="cursor-pointer select-none" for="vertical-checkbox-chris-evans">{{$getPilihan[$a][0]}}</label> </div>
+                <div class="flex items-center text-gray-700 mt-2"> <input name="jawaban[{{$key}}]" type="radio" class="input border mr-2" id="vertical-checkbox-chris-evans" value="{{$getPilihan[$a][1]}}" > <label class="cursor-pointer select-none" for="vertical-checkbox-chris-evans">{{$getPilihan[$a][1]}}</label> </div>
+                <div class="flex items-center text-gray-700 mt-2"> <input name="jawaban[{{$key}}]" type="radio" class="input border mr-2" id="vertical-checkbox-chris-evans" value="{{$getPilihan[$a][2]}}" > <label class="cursor-pointer select-none" for="vertical-checkbox-chris-evans">{{$getPilihan[$a][2]}}</label> </div>
+                <div class="flex items-center text-gray-700 mt-2"> <input name="jawaban[{{$key}}]" type="radio" class="input border mr-2" id="vertical-checkbox-chris-evans" value="{{$getPilihan[$a][3]}}" > <label class="cursor-pointer select-none" for="vertical-checkbox-chris-evans">{{$getPilihan[$a][3]}}</label> </div>
+              </div>
+              <input name="soal_id[{{$key}}]" type='hidden' value='{{$dt->id}}'>
+            </div>
+          </div>
+          @endif
         </div>
         @endforeach
         <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">

@@ -38,9 +38,10 @@ class SoalController extends Controller
     {
 
         $data = $request->all();
+        $data['pilihanGanda'] = json_encode($request->pilihanGanda);
         Soal::create($data);
 
-        return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
+        // return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
     }
 
     /**
