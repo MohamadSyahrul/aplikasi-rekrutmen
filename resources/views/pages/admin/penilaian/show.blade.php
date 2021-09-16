@@ -15,6 +15,42 @@
     <div class="tab-content__pane active" id="dashboard">
       <div class="grid grid-cols-12 gap-6">
         <!-- BEGIN: Pendidikan-->
+        @if(!empty($nilai))
+        <div class="intro-y box col-span-12 lg:col-span-12">
+            <form action="{{route('dataPenilaian.update', $nilai->id)}}" method="POST" >
+              @method('PATCH')
+                @csrf
+                <input type="hidden" name="lamaran_id" value="{{$lamaran->id}}" >
+                <input type="hidden" name="kuis_id" value="{{$kuis->id}}" >
+                <input type="hidden" name="pelamar_id" value="{{$pelamar->id}}" >
+                <div class="flex items-center p-5 border-b border-gray-200">
+                    <h2 class="font-medium text-base mr-auto">Nilai Untuk Pelamar : @if(!empty($pelamar->nama)){{{$pelamar->nama}}}@endif Nama Tidak Dicantumkan </h2>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col sm:flex-row">
+                      <div class="mr-auto">
+                          <a href="" class="font-medium">Nilai</a>
+                          <div class="text-gray-600 mt-1">
+                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai" value="{{$nilai->nilai}}">    
+                          </div>
+                      </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row mt-5">
+                      <div class="mr-auto">
+                          <a href="" class="font-medium">Status / Keterangan</a>
+                          <div class="text-gray-600 mt-1">
+                              <select name="status" id="status">
+                                  <option value="diterima">Diterima</option>
+                                  <option value="tidak diterima">Tidak Diterima</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="button bg-theme-1 text-white">Sumbit</button>
+                </div>
+            </form>
+        </div>
+        @else
         <div class="intro-y box col-span-12 lg:col-span-12">
             <form action="{{route('dataPenilaian.store')}}" method="POST" >
                 @csrf
@@ -26,28 +62,29 @@
                 </div>
                 <div class="p-5">
                     <div class="flex flex-col sm:flex-row">
-                    <div class="mr-auto">
-                        <a href="" class="font-medium">Nilai</a>
-                        <div class="text-gray-600 mt-1">
-                            <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai">    
-                        </div>
-                    </div>
+                      <div class="mr-auto">
+                          <a href="" class="font-medium">Nilai</a>
+                          <div class="text-gray-600 mt-1">
+                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai">    
+                          </div>
+                      </div>
                     </div>
                     <div class="flex flex-col sm:flex-row mt-5">
-                    <div class="mr-auto">
-                        <a href="" class="font-medium">Status / Keterangan</a>
-                        <div class="text-gray-600 mt-1">
-                            <select name="status" id="status">
-                                <option value="diterima">Diterima</option>
-                                <option value="tidak diterima">Tidak Diterima</option>
-                            </select>
-                        </div>
-                    </div>
+                      <div class="mr-auto">
+                          <a href="" class="font-medium">Status / Keterangan</a>
+                          <div class="text-gray-600 mt-1">
+                              <select name="status" id="status">
+                                  <option value="diterima">Diterima</option>
+                                  <option value="tidak diterima">Tidak Diterima</option>
+                              </select>
+                          </div>
+                      </div>
                     </div>
                     <button type="submit" class="button bg-theme-1 text-white">Sumbit</button>
                 </div>
             </form>
         </div>
+        @endif
       </div>
     </div>
   </div>

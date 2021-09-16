@@ -96,8 +96,10 @@ class JawabanController extends Controller
         $getLokerID     = $lamaran->loker_id;
         $kuis           = Kuis::where('loker_id', $getLokerID)->first();
         $soal           = Soal::where('kuis_id', $kuis->id)->get();
+        $nilai          = Penilaian::where('pelamar_id', $id)->first();
+    // dd($nilai);
         
-        return view('pages.admin.penilaian.show', compact(['jawaban', 'soal', 'pelamar', 'lamaran', 'kuis']));
+        return view('pages.admin.penilaian.show', compact(['jawaban', 'soal', 'pelamar', 'lamaran', 'kuis', 'nilai']));
     }
 
     /**
@@ -109,7 +111,11 @@ class JawabanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $nilai = Penilaian::findOrFail($id);
+        $nilai->update($data);
+
+        return redirect(route('dataPenilaian.index'))->with('success', 'Nilai berhasil ditambahkan');
     }
 
     /**
