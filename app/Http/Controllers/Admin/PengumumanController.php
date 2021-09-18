@@ -19,7 +19,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $data = Pengumuman::orderBy('id', 'desc')->paginate(3);
+        $data = Pengumuman::orderBy('created_at', 'desc')->paginate(3);
         // return $data;
         return view('pages.admin.pengumuman.index')->with('data', $data);
     }

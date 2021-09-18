@@ -98,6 +98,7 @@
                 </div>
               </div>
               <div class="flex sm:flex-row items-center mt-5">
+                <input class="button bg-theme-6 text-white mr-3" type="button" value="Batal" onclick="history.back(-1)">
                 <button type="submit" class="button bg-theme-1 text-white">Tambah</button>
               </div>
             </div>

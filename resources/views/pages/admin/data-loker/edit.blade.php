@@ -10,7 +10,7 @@
     <h2 class="text-lg font-medium mr-auto">
       Ubah Data Lowongan Kerja
     </h2>
-    
+
   </div>
 
   <div class="grid grid-cols-12 gap-6 mt-5">
@@ -88,6 +88,7 @@
                 </div>
               </div>
               <div class="flex sm:flex-row items-center mt-5">
+                <input class="button bg-theme-6 text-white mr-3" type="button" value="Batal" onclick="history.back(-1)">
                 <button type="submit" class="button bg-theme-1 text-white">Simpan</button>
               </div>
             </div>

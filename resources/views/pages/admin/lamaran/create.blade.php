@@ -27,19 +27,19 @@
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Pelamar</label>
                 <select name="pelamar_id" class="input w-full border mt-2 flex-1">
-                    <option>Pilih Pelamar</option>
-                    @foreach ($pelamar as $item)
+                  <option>Pilih Pelamar</option>
+                  @foreach ($pelamar as $item)
                     <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                    @endforeach
+                  @endforeach
                 </select>
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Lowongan Kerja</label>
                 <select name="loker_id" class="input w-full border mt-2 flex-1">
-                    <option>Pilih Loker</option>
-                    @foreach ($loker as $row)
-                    <option value="{{$row->id}}">{{ $row->nama }}</option>
-                    @endforeach
+                  <option>Pilih Loker</option>
+                  @foreach ($loker as $row)
+                    <option value="{{ $row->id }}">{{ $row->nama }}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="flex flex-col sm:flex-row items-center">
@@ -48,6 +48,7 @@
                   placeholder="Tanggal Unggah">
               </div>
               <div class="flex sm:flex-row items-center mt-5">
+                <input class="button bg-theme-6 text-white mr-3" type="button" value="Batal" onclick="history.back(-1)">
                 <button type="submit" class="button bg-theme-1 text-white">Tambah</button>
               </div>
             </div>

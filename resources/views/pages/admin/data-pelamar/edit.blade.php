@@ -19,7 +19,8 @@
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
           <h2 class="font-medium text-base mr-auto">Perbarui Data User</h2>
         </div>
-        <form action="{{ route('dataPelamar.update', $data->pelamar->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('dataPelamar.update', $data->pelamar->id) }}" method="POST"
+          enctype="multipart/form-data">
           @method('PATCH')
           @csrf
           <div class="p-5" id="horizontal-form">
@@ -68,6 +69,7 @@
                 <input type="file" class="input w-full border mt-2 flex-1" name="foto" placeholder="Upload Foto Profil">
               </div>
               <div class="flex sm:flex-row items-center mt-5">
+                <input class="button bg-theme-6 text-white mr-3" type="button" value="Batal" onclick="history.back(-1)">
                 <button type="submit" class="button bg-theme-1 text-white">Simpan</button>
               </div>
             </div>
@@ -80,5 +82,5 @@
   <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 lg:col-span-6">
 
-  </div>
-@endsection()
+    </div>
+  @endsection()

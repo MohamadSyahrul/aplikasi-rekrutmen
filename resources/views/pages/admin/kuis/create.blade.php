@@ -44,29 +44,35 @@
               </div>
               <div class="flex flex-col sm:flex-row items-center">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">tanggal</label>
-                <input name="tgl_kuis" type="text" class="datepicker input w-full border mt-2 flex-1" placeholder="Masukkan Nama Kuis">
+                <input name="tgl_kuis" type="text" class="datepicker input w-full border mt-2 flex-1"
+                  placeholder="Masukkan Nama Kuis">
               </div>
               <div class="flex flex-col sm:flex-row items-center mt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_mulai</label>
-                <input name="waktu_mulai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_mulai" type="text" data-timepicker="true"
+                  class="datepicker input w-full border mt-2 flex-1">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">waktu_selesai</label>
-                <input name="waktu_selesai" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="waktu_selesai" type="text" data-timepicker="true"
+                  class="datepicker input w-full border mt-2 flex-1">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">durasi</label>
-                <input name="durasi" type="text" data-timepicker="true" class="datepicker input w-full border mt-2 flex-1">
+                <input name="durasi" type="text" data-timepicker="true"
+                  class="datepicker input w-full border mt-2 flex-1">
               </div>
               <div class="flex flex-col sm:flex-row items-center  d-flexmt-3">
                 <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Loker</label>
-                <select  id="loker_id" name="loker_id" class="select2 w-full border mt-2 flex-1">
-                  @foreach($loker as $key => $lk)
-                    <option  id="loker_id[{{$key}}]" name="loker_id" value="{{$lk->id}}">{{$lk->nama}}</option>
+                <select id="loker_id" name="loker_id" class="select2 w-full border mt-2 flex-1">
+                  @foreach ($loker as $key => $lk)
+                    <option id="loker_id[{{ $key }}]" name="loker_id" value="{{ $lk->id }}">
+                      {{ $lk->nama }}</option>
                   @endforeach
                 </select>
               </div>
               <div class="flex sm:flex-row items-center mt-5">
+                <input class="button bg-theme-6 text-white mr-3" type="button" value="Batal" onclick="history.back(-1)">
                 <button type="submit" class="button bg-theme-1 text-white">Tambah</button>
               </div>
             </div>

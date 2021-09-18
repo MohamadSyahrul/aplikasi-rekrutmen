@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Loker;
+use App\Mail\PengumumanMail;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LokerController extends Controller
 {
@@ -65,6 +68,17 @@ class LokerController extends Controller
         }
 
         // dd($data);
+
+        $details = [
+            'title' => 'Lowongan Pekerjaan Baru',
+            'body' => 'Dibuka Lowongan Pekerjaan bagian ' . $data['nama'] . ' di perusahaan kami. Daftarkan diri anda sebelum tanggal ' . $data['batas_lamaran'] . '.'
+        ];
+
+        $user = User::get();
+
+        foreach ($user as $recipient) {
+            Mail::to($recipient->email)->send(new PengumumanMail($details));
+        }
 
         $loker = Loker::create($data);
 
