@@ -71,7 +71,9 @@ class KuisController extends Controller
     public function show($id)
     {
         $data = Kuis::findOrFail($id);
-        return view('pages.admin.kuis.edit', compact('data'));
+        $loker = Loker::all();
+        $soal  = Soal::where('kuis_id', $id)->get();
+        return view('pages.admin.kuis.edit', compact('data', 'loker','soal'));
     }
 
     /**
@@ -102,7 +104,7 @@ class KuisController extends Controller
         $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
         $data['durasi']         = date('H:i:s', $date4);
         
-        return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal', 'getPilihan']));
+        return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal']));
     }
 
     /**
