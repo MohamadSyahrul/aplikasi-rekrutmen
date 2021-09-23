@@ -95,6 +95,7 @@
       <tbody>
 
         <?php $a=0; ?>
+        <?php $b=0; ?>
         @foreach ($soal as $sl)
           <tr>
             <td class="border-b">
@@ -130,7 +131,7 @@
           
           <div class="modal" id="editSoal{{$sl->id}}">
             @if(empty($sl->pilihanGanda))
-            <?php $getPilihan[$a]; $a++;?>
+            <?php $getPilihan[$a]; $a++; $b++;?>
             <div class="modal__content">
                 <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
                     <h2 class="font-medium text-base mr-auto">Edit Data Soal Isian</h2>
@@ -196,19 +197,19 @@
                       <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
                         B
                       </div>
-                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan B" name="pilihanGanda[1]" value="{{$getPilihan[$a][1]}}">
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan B" name="pilihanGanda[1]" value="{{$getPilihan[$a][0]}}">
                     </div>
                     <div class="relative">
                       <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
                         C
                       </div>
-                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan C" name="pilihanGanda[2]" value="{{$getPilihan[$a][2]}}">
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan C" name="pilihanGanda[2]" value="{{$getPilihan[$a][0]}}">
                     </div>
                     <div class="relative">
                       <div class="absolute rounded-l w-10 h-full flex items-center justify-center bg-gray-100 border text-gray-600">
                         D
                       </div>
-                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan D" name="pilihanGanda[3]" value="{{$getPilihan[$a][3]}}">
+                      <input type="text" class="input pl-12 w-full border col-span-4" placeholder="Pilihan D" name="pilihanGanda[3]" value="{{$getPilihan[$a][0]}}">
                     </div>
                     <div class="col-span-12 sm:col-span-6"> 
                       <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Kunci Jawaban</label>
