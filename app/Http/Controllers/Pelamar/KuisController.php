@@ -26,12 +26,12 @@ class KuisController extends Controller
             $n++;
         }
         // dd($getKuis);
-        // foreach ($getKuis as $gk){
-        //     $getSoal = Soal::where('kuis_id', $getKuis[$s]->id)->get();
-        //     $s++;
-        // }
+        foreach ($getKuis as $gk){
+            $getSoal[$s] = Soal::where('kuis_id', $gk->id)->get();
+            $s++;
+        }
         // dd($getSoal);
-        return view('pages.pelamar.kuis.index', compact('data', 'getKuis'));
+        return view('pages.pelamar.kuis.index', compact('data', 'getKuis', 'getSoal'));
     }
 
     /**

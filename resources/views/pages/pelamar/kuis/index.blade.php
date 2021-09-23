@@ -25,7 +25,8 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($getKuis as $lamaran)
+        <?php $n=0;$s=0;$j=0; ?>
+        @foreach ($getKuis as $key => $lamaran)
           <tr>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">
@@ -42,24 +43,33 @@
             <td class="text-center border-b">
               <div class="font-medium whitespace-no-wrap">{{ $lamaran->loker->nama }}</div>
             </td>
-            @if ($lamaran->soal != null)
-              <td class="border-b w-5">
+            @if (!empty($getSoal[$n][$s]))
+            <td class="border-b w-5">
+              @if (!empty($getSoal[$n][$s]->jawaban[$j]))
+                <div class="flex sm:justify-center items-center">
+                  <i data-feather="award" class="w-4 h-4 mr-1"></i>
+                    Sudah Dikerjakan
+                </div>
+              @else
                 <div class="flex sm:justify-center items-center">
                   <a class="flex items-bottom mr-3 text-theme-1"
-                    href="{{ route('pelamarKuis.show', $lamaran->id) }}">
-                    <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
+                  href="{{ route('pelamarKuis.show', $lamaran->id) }}">
+                  <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
                     Kerjakan
                   </a>
                 </div>
-              </td>
+              @endif
+            </td>
             @else
               <td class="border-b w-5">
                 <div class="flex sm:justify-center items-center">
-                  <i data-feather="Close" class="w-4 h-4 mr-1"></i>
-                  Tunggu
+                  <i data-feather="clock" class="w-4 h-4 mr-1"></i>
+                  Soal Belum Keluar
                 </div>
+              </td>
             @endif
           </tr>
+          <?php $n++;$s++;$j++; ?>
         @endforeach
       </tbody>
     </table>
