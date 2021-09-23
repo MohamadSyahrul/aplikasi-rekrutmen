@@ -119,14 +119,19 @@
             <h2 class="font-medium text-base mr-auto">JAWABAN, total dijawab : {{$jawaban->count()}}</h2>
           </div>
           <div class="p-5">
-              <?php $j=1;  ?>
+              <?php $j=1;$n=0;  ?>
             @foreach($jawaban as $jwb)
             <div class="flex flex-col sm:flex-row">
               <div class="mr-auto">
                 <a href="" class="font-medium">Jawaban Nomor {{$j++}}</a>
-                <div class="text-gray-600 mt-1">{{$jwb->jawaban}}</div>
+                @if ($jwb->jawaban == $soal[$n]->kunci_jawaban)
+                  <div class="text-green-600 mt-1">{{$jwb->jawaban}}</div>
+                @else
+                  <div class="text-red-600 mt-1">{{$jwb->jawaban}}</div>
+                @endif
               </div>
             </div>
+            <?php $n++; ?>
             @endforeach
           </div>
         </div>

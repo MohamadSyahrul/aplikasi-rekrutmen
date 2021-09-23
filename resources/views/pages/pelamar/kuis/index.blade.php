@@ -25,28 +25,28 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($data as $lamaran)
+        @foreach ($getKuis as $lamaran)
           <tr>
             <td class="border-b">
               <div class="font-medium whitespace-no-wrap">
-                {{ $lamaran->loker->kuis->nama ?? 'Belum ada kuis' }}</div>
+                {{ $lamaran->nama ?? 'Belum ada kuis' }}</div>
             </td>
             <td class="text-center border-b">
               <div class="font-medium whitespace-no-wrap">
-                {{ $lamaran->loker->kuis->tgl_kuis ?? 'Tanggal belum ditentukan' }}</div>
+                {{ $lamaran->tgl_kuis ?? 'Tanggal belum ditentukan' }}</div>
             </td>
             <td class="text-center border-b">
               <div class="font-medium whitespace-no-wrap">
-                {{ $lamaran->loker->kuis->durasi ?? 'Durasi belum ditentukan' }}</div>
+                {{ $lamaran->durasi ?? 'Durasi belum ditentukan' }}</div>
             </td>
             <td class="text-center border-b">
               <div class="font-medium whitespace-no-wrap">{{ $lamaran->loker->nama }}</div>
             </td>
-            @if ($lamaran->loker->kuis != null)
+            @if ($lamaran->soal != null)
               <td class="border-b w-5">
                 <div class="flex sm:justify-center items-center">
                   <a class="flex items-bottom mr-3 text-theme-1"
-                    href="{{ route('pelamarKuis.show', $lamaran->loker->kuis->id) }}">
+                    href="{{ route('pelamarKuis.show', $lamaran->id) }}">
                     <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
                     Kerjakan
                   </a>

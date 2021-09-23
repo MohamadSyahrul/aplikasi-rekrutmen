@@ -85,7 +85,7 @@ class KuisController extends Controller
         $data  = Kuis::findOrFail($id);
         $soal  = Soal::where('kuis_id', $id)->get();
         $loker = Loker::all();
-
+        // $getPilihan = [null,null,null,null];
         $a=0;
         foreach ($soal as $row)  {
             $getPilihan[$a] = json_decode($row->pilihanGanda);

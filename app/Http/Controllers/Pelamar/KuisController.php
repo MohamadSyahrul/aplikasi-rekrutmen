@@ -6,6 +6,7 @@ use App\Kuis;
 use App\Lamaran;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Soal;
 use Illuminate\Support\Facades\Auth;
 
 class KuisController extends Controller
@@ -18,7 +19,19 @@ class KuisController extends Controller
     public function index(Kuis $kuis)
     {
         $data = Lamaran::where('pelamar_id', Auth::user()->pelamar->id)->get();
-        return view('pages.pelamar.kuis.index', compact('data'));
+        $n=0;
+        $s=0;
+        foreach ($data as $dt){
+            $getKuis = Kuis::where('loker_id', $data[$n]->loker->id)->get();
+            $n++;
+        }
+        // dd($getKuis);
+        // foreach ($getKuis as $gk){
+        //     $getSoal = Soal::where('kuis_id', $getKuis[$s]->id)->get();
+        //     $s++;
+        // }
+        // dd($getSoal);
+        return view('pages.pelamar.kuis.index', compact('data', 'getKuis'));
     }
 
     /**

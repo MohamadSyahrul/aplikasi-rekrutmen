@@ -38,10 +38,16 @@ class SoalController extends Controller
     {
 
         $data = $request->all();
-        $data['pilihanGanda'] = json_encode($request->pilihanGanda);
-        Soal::create($data);
+        if($data['pilihanGanda'] == [null,null,null,null])
+        {
+            $data['pilihanGanda'] = null;
+            Soal::create($data);
+        }else{
+            $data['pilihanGanda'] = json_encode($request->pilihanGanda);
+            Soal::create($data);
+        }
 
-        // return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
+        return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
     }
 
     /**
