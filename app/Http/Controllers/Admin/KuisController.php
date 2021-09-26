@@ -70,9 +70,8 @@ class KuisController extends Controller
      */
     public function show($id)
     {
-        $data  = Kuis::findOrFail($id);
+        $data  = Kuis::with('loker')->findOrFail($id);
         $soal  = Soal::where('kuis_id', $id)->get();
-        $loker = Loker::all();
         // $getPilihan = [null,null,null,null];
         $a=0;
         if(Soal::where('kuis_id', $id)->first() == null){
@@ -89,7 +88,7 @@ class KuisController extends Controller
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
             
-            return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal']));
+            return view('pages.admin.kuis.detail', compact(['data', 'soal']));
         }else{
             foreach ($soal as $row)  {
                 $getPilihan[$a] = json_decode($row->pilihanGanda);
@@ -104,7 +103,7 @@ class KuisController extends Controller
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
             
-            return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal', 'getPilihan']));
+            return view('pages.admin.kuis.detail', compact(['data', 'soal', 'getPilihan']));
         }
     }
 
