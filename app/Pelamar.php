@@ -8,6 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Pelamar extends Model
 {
     protected $guarded = ['id'];
+    protected $fillable = [
+        'nama',
+        'tempat_lahir',
+        'tgl_lahir',
+        'jenis_kelamin',
+        'no_telp',
+        'foto',
+        'user_id',
+    ];
+
 
     public static function getPelamar()
     {

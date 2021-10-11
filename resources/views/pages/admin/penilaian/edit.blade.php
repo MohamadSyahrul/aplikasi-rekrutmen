@@ -149,6 +149,10 @@
                   <i data-feather="x-circle" class="w-4 h-4 mr-1"></i>
                   Belum Dinilai
                   </a>
+                  <a class="flex items-bottom mr-3 text-theme-90" href="{{route('NilaiWawancara', $pl->id)}}">
+                    <i data-feather="video" class="w-4 h-4 mr-1"></i>
+                    Wawancara
+                    </a>
                   <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('dataPenilaian.edit', $pl->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
@@ -167,6 +171,10 @@
                   <i data-feather="check-circle" class="w-4 h-4 mr-1"></i>
                   Sudah Dinilai
                   </a>
+                  <a class="flex items-bottom mr-3 text-theme-90" href="{{route('NilaiWawancara', $pl->id)}}">
+                    <i data-feather="video" class="w-4 h-4 mr-1"></i>
+                    Wawancara
+                    </a>
                   <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('dataPenilaian.edit', $pl->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail

@@ -48,6 +48,9 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataSoal', 'Admin\SoalController');
     Route::resource('dataPenilaian', 'Admin\JawabanController');
 
+    Route::get('NilaiWawancara/{id}', 'Admin\JawabanController@wawancara')->name('NilaiWawancara');
+
+
 });
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {

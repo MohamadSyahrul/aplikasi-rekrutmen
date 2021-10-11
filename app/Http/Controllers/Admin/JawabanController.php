@@ -128,4 +128,14 @@ class JawabanController extends Controller
     {
         //
     }
+
+    public function wawancara($id)
+    {
+        $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
+
+        return view('pages.admin.penilaian.wawancara', [
+            'pelamar' => $pelamar,
+        ]);
+
+    }
 }
