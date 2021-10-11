@@ -118,7 +118,6 @@ class KuisController extends Controller
         $data  = Kuis::findOrFail($id);
         $soal  = Soal::where('kuis_id', $id)->get();
         $loker = Loker::all();
-        // $getPilihan = [null,null,null,null];
         $a=0;
         if(Soal::where('kuis_id', $id)->first() == null){
             foreach ($soal as $row)  {
