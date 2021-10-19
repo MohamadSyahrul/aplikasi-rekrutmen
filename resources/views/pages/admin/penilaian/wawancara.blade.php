@@ -63,156 +63,68 @@ Nilai Wawancara
         <h2 class="font-medium text-base mr-auto">
             Tabel Penilaian
         </h2>
-        <p>
-            <div class="text-center">
-                <a href="javascript:;" data-toggle="modal" data-target="#header-footer-modal-preview"
-                    class="button inline-block bg-theme-1 text-white">
-                    Tambah Data
-                </a>
-            </div>
-
-            <div class="modal" id="header-footer-modal-preview">
-                <div class="modal__content">
-                    <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
-                        <h2 class="font-medium text-base mr-auto">Broadcast Message</h2>
-                    </div>
-                    <div class="p-5 grid grid-cols-12 gap-4 row-gap-3">
-                        <div class="col-span-12 sm:col-span-6"> <label>From</label> <input type="text"
-                                class="input w-full border mt-2 flex-1" placeholder="example@gmail.com"> </div>
-                        <div class="col-span-12 sm:col-span-6"> <label>To</label> <input type="text"
-                                class="input w-full border mt-2 flex-1" placeholder="example@gmail.com"> </div>
-                        <div class="col-span-12 sm:col-span-6"> <label>Subject</label> <input type="text"
-                                class="input w-full border mt-2 flex-1" placeholder="Important Meeting"> </div>
-                        <div class="col-span-12 sm:col-span-6"> <label>Has the Words</label> <input type="text"
-                                class="input w-full border mt-2 flex-1" placeholder="Job, Work, Documentation"> </div>
-                        <div class="col-span-12 sm:col-span-6"> <label>Doesn't Have</label> <input type="text"
-                                class="input w-full border mt-2 flex-1" placeholder="Job, Work, Documentation"> </div>
-                        <div class="col-span-12 sm:col-span-6"> <label>Size</label> <select
-                                class="input w-full border mt-2 flex-1">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>35</option>
-                                <option>50</option>
-                            </select> </div>
-                    </div>
-                    <div class="px-5 py-3 text-right border-t border-gray-200"> <button type="button"
-                            class="button w-20 border text-gray-700 mr-1">Cancel</button> <button type="button"
-                            class="button w-20 bg-theme-1 text-white">Send</button> </div>
-                </div>
-            </div>
-        </p>
     </div>
     <div class="overflow-x-auto">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="border text-center border-b-2 whitespace-no-wrap">#</th>
-                    <th class="border text-center border-b-2 whitespace-no-wrap">Keterangan</th>
-                    <th class="border text-center border-b-2 whitespace-no-wrap">Nilai</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="hover:bg-gray-200">
-                    <td class="border text-center">1</td>
-                    <td class="border text-center">Penilaian 1</td>
-                    <td class="border text-center">
-                        <div class="flex flex-col sm:flex-row mt-2">
-                            <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-chris-evans"
-                                    name="horizontal_radio_button" value="horizontal-radio-chris-evans"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-chris-evans">SB</label>
+        <form action="{{ route('NilaiWawancaraStore') }}" method="post">
+            @csrf
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">#</th>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">Keterangan</th>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    @foreach ($wawancara as $item)
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">{{$loop->iteration}}</td>
+                        <td class="border text-center">{{$item->keterangan}}</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="{{$item->id}}"
+                                        name="horizontal_radio_button" value="sb"> <label
+                                        class="cursor-pointer select-none" for="{{$item->id}}">SB</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="horizontal_radio_button" value="b"> <label
+                                        class="cursor-pointer select-none" for="b">B</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="horizontal_radio_button" value="c"> <label
+                                        class="cursor-pointer select-none" for="c">C</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="horizontal_radio_button" value="k"> <label
+                                        class="cursor-pointer select-none" for="k">K</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="horizontal_radio_button" value="sk"> <label
+                                        class="cursor-pointer select-none" for="sk">SK</label>
+                                </div>
                             </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-liam-neeson"
-                                    name="horizontal_radio_button" value="horizontal-radio-liam-neeson"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-liam-neeson">B</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">C</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">K</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">SK</label>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-200">
-                    <td class="border text-center">2</td>
-                    <td class="border text-center">Penilaian 2</td>
-                    <td class="border text-center">
-                        <div class="flex flex-col sm:flex-row mt-2">
-                            <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-chris-evans"
-                                    name="horizontal_radio_button" value="horizontal-radio-chris-evans"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-chris-evans">SB</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-liam-neeson"
-                                    name="horizontal_radio_button" value="horizontal-radio-liam-neeson"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-liam-neeson">B</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">C</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">K</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">SK</label>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-200">
-                    <td class="border text-center">3</td>
-                    <td class="border text-center">Penilaian 3</td>
-                    <td class="border text-center">
-                        <div class="flex flex-col sm:flex-row mt-2">
-                            <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-chris-evans"
-                                    name="horizontal_radio_button" value="horizontal-radio-chris-evans"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-chris-evans">SB</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-liam-neeson"
-                                    name="horizontal_radio_button" value="horizontal-radio-liam-neeson"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-liam-neeson">B</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">C</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">K</label>
-                            </div>
-                            <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
-                                    class="input border mr-2" id="horizontal-radio-daniel-craig"
-                                    name="horizontal_radio_button" value="horizontal-radio-daniel-craig"> <label
-                                    class="cursor-pointer select-none" for="horizontal-radio-daniel-craig">SK</label>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    @endforeach
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="button bg-theme-1 text-white">Send</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
     </div>
 </div>
 @endsection

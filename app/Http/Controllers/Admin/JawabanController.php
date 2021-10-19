@@ -11,6 +11,7 @@ use App\Pelamar;
 use App\Penilaian;
 use App\Soal;
 use App\User;
+use App\Wawancara;
 use Illuminate\Http\Request;
 
 class JawabanController extends Controller
@@ -132,10 +133,21 @@ class JawabanController extends Controller
     public function wawancara($id)
     {
         $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
+        $wawancara = Wawancara::all();
 
         return view('pages.admin.penilaian.wawancara', [
             'pelamar' => $pelamar,
+            'wawancara' => $wawancara,
         ]);
+
+    }
+    public function wawancaraStore(Request $request)
+    {
+        $data = $request->all();
+        // dd($data);
+        Wawancara::create($data);
+        
+        return redirect(route('dataPenilaian.index'));
 
     }
 }

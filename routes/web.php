@@ -49,6 +49,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPenilaian', 'Admin\JawabanController');
 
     Route::get('NilaiWawancara/{id}', 'Admin\JawabanController@wawancara')->name('NilaiWawancara');
+    Route::post('NilaiWawancaraStore', 'Admin\JawabanController@wawancaraStore')->name('NilaiWawancaraStore');
 
 
 });
