@@ -76,43 +76,188 @@ Nilai Wawancara
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    @foreach ($wawancara as $item)
+                    <?php $a=0; ?>
+                    @foreach ($wawancara as $key=> $item)
+                    <?php $getPilihan[$a]; $a++;?>
                     <tr class="hover:bg-gray-200">
-                        <td class="border text-center">{{$loop->iteration}}</td>
-                        <td class="border text-center">{{$item->keterangan}}</td>
+                        <td class="border text-center">1</td>
+                        <td class="border text-center">pertanyaan 1</td>
+                       
                         <td class="border text-center">
-                            <div class="flex flex-col sm:flex-row mt-2">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
-                                        class="input border mr-2" id="{{$item->id}}"
-                                        name="horizontal_radio_button" value="sb"> <label
-                                        class="cursor-pointer select-none" for="{{$item->id}}">SB</label>
+                                        class="input border mr-2" id="sb"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="horizontal_radio_button" value="b"> <label
-                                        class="cursor-pointer select-none" for="b">B</label>
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="horizontal_radio_button" value="c"> <label
-                                        class="cursor-pointer select-none" for="c">C</label>
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="horizontal_radio_button" value="k"> <label
-                                        class="cursor-pointer select-none" for="k">K</label>
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="horizontal_radio_button" value="sk"> <label
-                                        class="cursor-pointer select-none" for="sk">SK</label>
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">2</td>
+                        <td class="border text-center">pertanyaan 2</td>
+                        <td class="border text-center">
+                       
 
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">3</td>
+                        <td class="border text-center">pertanyaan 3</td>
+                        <td class="border text-center">
+                       
+
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">4</td>
+                        <td class="border text-center">pertanyaan 4</td>
+                        <td class="border text-center">
+                       
+
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">5</td>
+                        <td class="border text-center">pertanyaan 5</td>
+                        <td class="border text-center">
+                       
+
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>

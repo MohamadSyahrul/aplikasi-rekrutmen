@@ -2,6 +2,9 @@
 
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\Pelamar;
+use App\Lamaran;
+use App\Loker;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeUnit\FunctionUnit;
@@ -31,7 +34,14 @@ Route::get('icon', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
-        return view('pages.dashboard');
+        $user = User::count();
+        $lamaran = Lamaran::count();
+        $lowongan = Loker::count();
+        return view('pages.dashboard',[
+            'user' => $user,
+            'lamaran' => $lamaran,
+            'lowongan' => $lowongan,
+        ]);
     });
 });
 

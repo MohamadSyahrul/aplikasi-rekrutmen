@@ -135,9 +135,16 @@ class JawabanController extends Controller
         $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
         $wawancara = Wawancara::all();
 
+        $a=0;
+        foreach ($wawancara as $row)  {
+            $getPilihan[$a] = json_decode($row->pilihanGanda);
+            $a++;
+        }
+
         return view('pages.admin.penilaian.wawancara', [
             'pelamar' => $pelamar,
             'wawancara' => $wawancara,
+            'getPilihan' => $getPilihan
         ]);
 
     }
