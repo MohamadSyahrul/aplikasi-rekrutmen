@@ -49,6 +49,12 @@ Nilai Wawancara
                                     <div class="text-gray-600">{{ $pelamar->jenis_kelamin }}</div>
                                 </div>
                             </div>
+                            <div class="flex items-center mt-5">
+                                <div class="border-l-2 border-theme-1 pl-4">
+                                    <a href="" class="font-medium">Email</a>
+                                    <div class="text-gray-600">{{ $pelamar->email }}</div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -58,6 +64,7 @@ Nilai Wawancara
     </div>
 </div>
 
+@if($wawancara == null)
 <div class="intro-y box p-5 mt-5">
     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
         <h2 class="font-medium text-base mr-auto">
@@ -67,6 +74,8 @@ Nilai Wawancara
     <div class="overflow-x-auto">
         <form action="{{ route('NilaiWawancaraStore') }}" method="post">
             @csrf
+            <input type="hidden" name="pelamar_id" value={{$pelamar->id}}>
+            <input type="hidden" name="lamaran_id" value={{$lamaran->id}}>
             <table class="table">
                 <thead>
                     <tr>
@@ -76,9 +85,7 @@ Nilai Wawancara
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $a=0; ?>
-                    @foreach ($wawancara as $key=> $item)
-                    <?php $getPilihan[$a]; $a++;?>
+                    
                     <tr class="hover:bg-gray-200">
                         <td class="border text-center">1</td>
                         <td class="border text-center">pertanyaan 1</td>
@@ -87,27 +94,27 @@ Nilai Wawancara
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        name="nilai1" value="90"> <label
                                         class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        name="nilai1" value="85"> <label
                                         class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        name="nilai1" value="80"> <label
                                         class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        name="nilai1" value="75"> <label
                                         class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        name="nilai1" value="70"> <label
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
@@ -122,27 +129,27 @@ Nilai Wawancara
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        name="nilai2" value="90"> <label
                                         class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        name="nilai2" value="85"> <label
                                         class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        name="nilai2" value="80"> <label
                                         class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        name="nilai2" value="75"> <label
                                         class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        name="nilai2" value="70"> <label
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
@@ -158,27 +165,27 @@ Nilai Wawancara
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        name="nilai3" value="90"> <label
                                         class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        name="nilai3" value="85"> <label
                                         class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        name="nilai3" value="80"> <label
                                         class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        name="nilai3" value="75"> <label
                                         class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        name="nilai3" value="70"> <label
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
@@ -194,27 +201,27 @@ Nilai Wawancara
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        name="nilai4" value="90"> <label
                                         class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        name="nilai4" value="85"> <label
                                         class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        name="nilai4" value="80"> <label
                                         class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        name="nilai4" value="75"> <label
                                         class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        name="nilai4" value="70"> <label
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
@@ -230,34 +237,34 @@ Nilai Wawancara
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][0]}}"> <label
+                                        name="nilai5" value="90"> <label
                                         class="cursor-pointer select-none" for="sb">90</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="b"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][1]}}"> <label
+                                        name="nilai5" value="85"> <label
                                         class="cursor-pointer select-none" for="b">85</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="c"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][2]}}"> <label
+                                        name="nilai5" value="80"> <label
                                         class="cursor-pointer select-none" for="c">80</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="k"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][3]}}"> <label
+                                        name="nilai5" value="75"> <label
                                         class="cursor-pointer select-none" for="k">75</label>
                                 </div>
                                 <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
                                         class="input border mr-2" id="sk"
-                                        name="nilai[{{$key}}]" value="{{$getPilihan[$a][4]}}"> <label
+                                        name="nilai5" value="70"> <label
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
 
                         </td>
                     </tr>
-                    @endforeach
+                    
                 </tbody>
                 <tfoot>
                     <tr>
@@ -272,4 +279,207 @@ Nilai Wawancara
         </form>
     </div>
 </div>
+@else
+<div class="intro-y box p-5 mt-5">
+    <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
+        <h2 class="font-medium text-base mr-auto">
+            Tabel Penilaian
+        </h2>
+    </div>
+    <div class="overflow-x-auto">
+        <form action="{{ route('NilaiWawancaraUpdate', $wawancara->id) }}" method="post">
+            @method('patch')
+            @csrf
+            <input type="hidden" name="pelamar_id" value={{$pelamar->id}}>
+            <input type="hidden" name="lamaran_id" value={{$lamaran->id}}>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">#</th>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">Keterangan</th>
+                        <th class="border text-center border-b-2 whitespace-no-wrap">Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">1</td>
+                        <td class="border text-center">pertanyaan 1</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai1" value="90"<?php if ($nilai1=='90') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai1" value="85"<?php if ($nilai1=='85') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai1" value="80"<?php if ($nilai1=='80') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai1" value="75"<?php if ($nilai1=='75') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai1" value="70"<?php if ($nilai1=='70') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">2</td>
+                        <td class="border text-center">pertanyaan 2</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai2" value="90"<?php if ($nilai2=='90') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai2" value="85"<?php if ($nilai2=='85') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai2" value="80"<?php if ($nilai2=='80') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai2" value="75"<?php if ($nilai2=='75') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai2" value="70"<?php if ($nilai2=='70') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">3</td>
+                        <td class="border text-center">pertanyaan 3</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai3" value="90"<?php if ($nilai3=='90') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai3" value="85"<?php if ($nilai3=='85') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai3" value="80"<?php if ($nilai3=='80') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai3" value="75"<?php if ($nilai3=='75') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai3" value="70"<?php if ($nilai3=='70') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">4</td>
+                        <td class="border text-center">pertanyaan 4</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai4" value="90"<?php if ($nilai4=='90') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai4" value="85"<?php if ($nilai4=='85') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai4" value="80"<?php if ($nilai4=='80') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai4" value="75"<?php if ($nilai4=='75') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai4" value="70"<?php if ($nilai4=='70') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-gray-200">
+                        <td class="border text-center">5</td>
+                        <td class="border text-center">pertanyaan 5</td>
+                        <td class="border text-center">
+                            <div class="flex flex-col sm:flex-row mt-2 inline-flex">
+                                <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
+                                        class="input border mr-2" id="sb"
+                                        name="nilai5" value="90"<?php if ($nilai5=='90') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sb">90</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="b"
+                                        name="nilai5" value="85"<?php if ($nilai5=='85') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="b">85</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="c"
+                                        name="nilai5" value="80"<?php if ($nilai5=='80') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="c">80</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="k"
+                                        name="nilai5" value="75"<?php if ($nilai5=='75') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="k">75</label>
+                                </div>
+                                <div class="flex items-center text-gray-700 mr-2 mt-2 sm:mt-0"> <input type="radio"
+                                        class="input border mr-2" id="sk"
+                                        name="nilai5" value="70"<?php if ($nilai5=='70') { echo ' checked'; } ?>> <label
+                                        class="cursor-pointer select-none" for="sk">70</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td width="30">
+                            <button type="submit" class="button bg-theme-1 text-white">update</button>
+                        </td>
+                        <td colspan="2">Total Nilai: {{$totalNilai}}<br>Rata-Rata Nilai : {{$rataRataNilai}}<br> Keterangan : {{$wawancara->keterangan}}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </form>
+    </div>
+</div>
+@endif
 @endsection

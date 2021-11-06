@@ -133,28 +133,69 @@ class JawabanController extends Controller
     public function wawancara($id)
     {
         $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
-        $wawancara = Wawancara::all();
-
-        $a=0;
-        foreach ($wawancara as $row)  {
-            $getPilihan[$a] = json_decode($row->pilihanGanda);
-            $a++;
-        }
-
-        return view('pages.admin.penilaian.wawancara', [
-            'pelamar' => $pelamar,
-            'wawancara' => $wawancara,
-            'getPilihan' => $getPilihan
-        ]);
-
+        $lamaran    = Lamaran::where('pelamar_id', $pelamar->id)->first();
+        $wawancara = Wawancara::where('pelamar_id', $pelamar->id)->first();
+        $nilai = json_decode($wawancara->nilai);
+        $nilai1 = $nilai[0];
+        $nilai2 = $nilai[1];
+        $nilai3 = $nilai[2];
+        $nilai4 = $nilai[3];
+        $nilai5 = $nilai[4];
+        $totalNilai = $nilai1 + $nilai2 + $nilai3 + $nilai4 + $nilai5;
+        $rataRataNilai = $totalNilai / 5;
+        // dd($nilai1,$nilai2,$nilai3,$nilai4,$nilai5);
+        return view('pages.admin.penilaian.wawancara', compact('pelamar', 'wawancara', 'lamaran', 'nilai1', 'nilai2', 'nilai3', 'nilai4', 'nilai5', 'totalNilai', 'rataRataNilai'));
     }
     public function wawancaraStore(Request $request)
     {
         $data = $request->all();
-        // dd($data);
-        Wawancara::create($data);
+        $totalNilai = (($request->nilai1 + $request->nilai2 + $request->nilai3 + $request->nilai4 + $request->nilai5) / 5);
+        if($totalNilai >= 86 && $totalNilai <= 90){$ket = 'Sanget Baik';
+        }elseif($totalNilai >= 81 && $totalNilai <= 85){$ket = 'Baik';
+        }elseif($totalNilai >= 76 && $totalNilai <= 80){$ket = 'Cukup';
+        }elseif($totalNilai >= 71 && $totalNilai <= 75){$ket = 'Kurang';
+        }elseif($totalNilai >= 0 && $totalNilai <= 70){$ket = 'Sanget Kurang';
+        };
+        $getNilai = array($request->nilai1,$request->nilai2,$request->nilai3,$request->nilai4,$request->nilai5);
+        $nilai = json_encode($getNilai);
+        $createData = array(
+            "pelamar_id" => $request->pelamar_id,
+            "lamaran_id" => $request->lamaran_id,
+            "keterangan" => $ket,
+            "nilai" => $nilai,
+        );
+        // dd($createData);
+        Wawancara::create($createData);
         
         return redirect(route('dataPenilaian.index'));
 
     }
+
+    public function wawancaraUpdate(Request $request, $id)
+    {
+        $data = $request->all();
+        $wawancaraUpdate = Wawancara::findOrFail($id);
+        $totalNilai = (($request->nilai1 + $request->nilai2 + $request->nilai3 + $request->nilai4 + $request->nilai5) / 5);
+        if($totalNilai >= 86 && $totalNilai <= 90){$ket = 'Sanget Baik';
+        }elseif($totalNilai >= 81 && $totalNilai <= 85){$ket = 'Baik';
+        }elseif($totalNilai >= 76 && $totalNilai <= 80){$ket = 'Cukup';
+        }elseif($totalNilai >= 71 && $totalNilai <= 75){$ket = 'Kurang';
+        }elseif($totalNilai >= 0 && $totalNilai <= 70){$ket = 'Sanget Kurang';
+        };
+        $getNilai = array($request->nilai1,$request->nilai2,$request->nilai3,$request->nilai4,$request->nilai5);
+        $nilai = json_encode($getNilai);
+        $createData = array(
+            "pelamar_id" => $request->pelamar_id,
+            "lamaran_id" => $request->lamaran_id,
+            "keterangan" => $ket,
+            "nilai" => $nilai,
+        );
+        // dd($data);
+        $wawancaraUpdate->update($createData);
+        
+        return redirect(route('dataPenilaian.index'));
+
+    }
+
+
 }
