@@ -14,6 +14,8 @@ use App\User;
 use App\Wawancara;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isEmpty;
+
 class JawabanController extends Controller
 {
     /**
@@ -135,6 +137,11 @@ class JawabanController extends Controller
         $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
         $lamaran    = Lamaran::where('pelamar_id', $pelamar->id)->first();
         $wawancara = Wawancara::where('pelamar_id', $pelamar->id)->first();
+        // $wawancara = Wawancara::all();
+        // if (isEmpty($wawancara)) {
+        //     # code...
+        // }
+        // dd($pelamar, $lamaran, $wawancara);
         $nilai = json_decode($wawancara->nilai);
         $nilai1 = $nilai[0];
         $nilai2 = $nilai[1];
