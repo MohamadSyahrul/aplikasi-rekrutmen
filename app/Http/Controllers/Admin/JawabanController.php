@@ -137,19 +137,26 @@ class JawabanController extends Controller
         $pelamar    = Pelamar::with('lamaran')->findOrFail($id);
         $lamaran    = Lamaran::where('pelamar_id', $pelamar->id)->first();
         $wawancara = Wawancara::where('pelamar_id', $pelamar->id)->first();
-        // $wawancara = Wawancara::all();
-        // if (isEmpty($wawancara)) {
-        //     # code...
-        // }
-        // dd($pelamar, $lamaran, $wawancara);
-        $nilai = json_decode($wawancara->nilai);
-        $nilai1 = $nilai[0];
-        $nilai2 = $nilai[1];
-        $nilai3 = $nilai[2];
-        $nilai4 = $nilai[3];
-        $nilai5 = $nilai[4];
-        $totalNilai = $nilai1 + $nilai2 + $nilai3 + $nilai4 + $nilai5;
-        $rataRataNilai = $totalNilai / 5;
+        // dd($wawancara);
+        if ($wawancara == NULL) {
+            $nilai = 0;
+            $nilai1 = $nilai;
+            $nilai2 = $nilai;
+            $nilai3 = $nilai;
+            $nilai4 = $nilai;
+            $nilai5 = $nilai;
+            $totalNilai = $nilai1 + $nilai2 + $nilai3 + $nilai4 + $nilai5;
+            $rataRataNilai = $totalNilai / 5;
+        }else{
+            $nilai = json_decode($wawancara->nilai);
+            $nilai1 = $nilai[0];
+            $nilai2 = $nilai[1];
+            $nilai3 = $nilai[2];
+            $nilai4 = $nilai[3];
+            $nilai5 = $nilai[4];
+            $totalNilai = $nilai1 + $nilai2 + $nilai3 + $nilai4 + $nilai5;
+            $rataRataNilai = $totalNilai / 5;
+        }
         // dd($nilai1,$nilai2,$nilai3,$nilai4,$nilai5);
         return view('pages.admin.penilaian.wawancara', compact('pelamar', 'wawancara', 'lamaran', 'nilai1', 'nilai2', 'nilai3', 'nilai4', 'nilai5', 'totalNilai', 'rataRataNilai'));
     }
