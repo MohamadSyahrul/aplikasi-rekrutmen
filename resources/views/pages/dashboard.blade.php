@@ -24,7 +24,7 @@
               <div class="box p-5">
                 <div class="flex">
                   <i data-feather="users" class="report-box__icon text-theme-10"></i>
-                  
+
                 </div>
                 <div class="text-3xl font-bold leading-8 mt-6">{{$user}}</div>
                 <div class="text-base text-gray-600 mt-1">Total Pelamar</div>
@@ -36,7 +36,7 @@
               <div class="box p-5">
                 <div class="flex">
                   <i data-feather="package" class="report-box__icon text-theme-11"></i>
-                  
+
                 </div>
                 <div class="text-3xl font-bold leading-8 mt-6">{{$lamaran}}</div>
                 <div class="text-base text-gray-600 mt-1">Total Lamaran</div>
@@ -48,13 +48,28 @@
               <div class="box p-5">
                 <div class="flex">
                   <i data-feather="log-in" class="report-box__icon text-theme-12"></i>
-                  
+
                 </div>
                 <div class="text-3xl font-bold leading-8 mt-6">{{ $lowongan }}</div>
                 <div class="text-base text-gray-600 mt-1">Total Lowongan</div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="grid grid-cols-12 gap-6 mt-5">
+            @foreach ($kategori as $item)
+            <div class="col-span-12 sm:col-span-6 xl:col-span-4 intro-y">
+              <div class="report-box zoom-in">
+                <div class="box p-5">
+                  <div class="flex">
+                    <i data-feather="paperclip" class="report-box__icon text-theme-70"></i>
+                  </div>
+                  <div class="text-3xl font-bold leading-8 mt-6">{{count([$item->pelamar_id])}}</div>
+                  <div class="text-base text-gray-600 mt-1">{{$item->nama}}</div>
+                </div>
+              </div>
+            </div>
+            @endforeach
         </div>
       </div>
       <!-- END: General Report -->
