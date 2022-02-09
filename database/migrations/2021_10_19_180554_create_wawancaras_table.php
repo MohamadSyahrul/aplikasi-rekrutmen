@@ -15,6 +15,8 @@ class CreateWawancarasTable extends Migration
     {
         Schema::create('wawancaras', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('lamaran_id');
+            $table->unsignedBigInteger('pelamar_id');
             $table->string('keterangan');
             $table->string('nilai');
             $table->timestamps();

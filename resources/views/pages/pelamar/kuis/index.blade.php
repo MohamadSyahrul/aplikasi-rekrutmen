@@ -55,7 +55,7 @@
                   <a class="flex items-bottom mr-3 text-theme-1"
                   href="{{ route('pelamarKuis.show', $lamaran->id) }}">
                   <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                    Kerjakan
+                    Soal Telah Keluar
                   </a>
                 </div>
               @endif

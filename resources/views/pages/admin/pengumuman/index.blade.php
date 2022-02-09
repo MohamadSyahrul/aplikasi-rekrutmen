@@ -18,6 +18,16 @@
     </div>
   </div>
   {{-- Jenis 1 --}}
+  @if (session()->get('success'))
+    <div class="p-5" id="icon-dismiss-alert">
+      <div class="preview">
+        <div class="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-14 text-theme-10">
+          <i data-feather="alert-circle" class="w-6 h-6 mr-2"></i> {{ session()->get('success') }} <i data-feather="x"
+            class="w-4 h-4 ml-auto"></i>
+        </div>
+      </div>
+    </div>
+  @endif
   <div class="intro-y grid grid-cols-12 gap-6 mt-5">
     <!-- BEGIN: Pengumuman -->
     @foreach ($data as $pengumuman)
@@ -33,10 +43,20 @@
               <span class="mx-1">•</span> {{ $pengumuman->tgl_pengumuman }}
             </div>
           </div>
-          <div class="ml-3">
+          <div class="ml-3 px-2">
             <a class="button bg-theme-1 text-white" href="{{ route('pengumuman.edit', $pengumuman->id) }}">
               Edit</a>
           </div>
+          <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}" method="post"
+            onsubmit="return confirm('Yakin hapus data ?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit">
+              <div class="button bg-theme-6 text-white">
+                Hapus
+              </div>
+            </button>
+          </form>
         </div>
         <div class="p-5">
           <a href="" class="block font-medium text-base mt-5">{{ $pengumuman->judul_pengumuman }}</a>

@@ -85,11 +85,9 @@ Nilai Wawancara
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr class="hover:bg-gray-200">
                         <td class="border text-center">1</td>
                         <td class="border text-center">pertanyaan 1</td>
-
                         <td class="border text-center">
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
@@ -124,8 +122,6 @@ Nilai Wawancara
                         <td class="border text-center">2</td>
                         <td class="border text-center">pertanyaan 2</td>
                         <td class="border text-center">
-
-
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
@@ -160,8 +156,6 @@ Nilai Wawancara
                         <td class="border text-center">3</td>
                         <td class="border text-center">pertanyaan 3</td>
                         <td class="border text-center">
-
-
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
@@ -189,14 +183,12 @@ Nilai Wawancara
                                         class="cursor-pointer select-none" for="sk">70</label>
                                 </div>
                             </div>
-
                         </td>
                     </tr>
                     <tr class="hover:bg-gray-200">
                         <td class="border text-center">4</td>
                         <td class="border text-center">pertanyaan 4</td>
                         <td class="border text-center">
-
 
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
@@ -232,8 +224,6 @@ Nilai Wawancara
                         <td class="border text-center">5</td>
                         <td class="border text-center">pertanyaan 5</td>
                         <td class="border text-center">
-
-
                             <div class="flex flex-col sm:flex-row mt-2 inline-flex">
                                 <div class="flex items-center text-gray-700 mr-2"> <input type="radio"
                                         class="input border mr-2" id="sb"
@@ -264,7 +254,6 @@ Nilai Wawancara
 
                         </td>
                     </tr>
-
                 </tbody>
                 <tfoot>
                     <tr>
@@ -301,7 +290,6 @@ Nilai Wawancara
                     </tr>
                 </thead>
                 <tbody>
-
                     <tr class="hover:bg-gray-200">
                         <td class="border text-center">1</td>
                         <td class="border text-center">pertanyaan 1</td>
@@ -467,7 +455,6 @@ Nilai Wawancara
                             </div>
                         </td>
                     </tr>
-
                 </tbody>
                 <tfoot>
                     <tr>
@@ -482,5 +469,4 @@ Nilai Wawancara
     </div>
 </div>
 @endif
-
 @endsection
