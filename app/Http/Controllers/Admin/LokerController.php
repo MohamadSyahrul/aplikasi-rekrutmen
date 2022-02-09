@@ -164,4 +164,12 @@ class LokerController extends Controller
 
         return redirect(route('lowonganKerja.index'))->with('success', 'Lowongan Kerja berhasil dihapus');
     }
+
+    public function detail(Request $request, $id){
+        loker::where('id', $id)->update([
+            'status' => 'Aktif',
+        ]);
+    return redirect('lowonganKerja');
+
+    }
 }

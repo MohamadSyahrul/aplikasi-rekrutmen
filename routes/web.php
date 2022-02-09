@@ -35,13 +35,21 @@ Route::get('icon', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         $user = User::count();
+        $kategori = DB::table("lamarans as lm")->select(DB::raw('pelamar_id, ls.nama'))
+                                        ->leftJoin('lokers as ls', 'lm.loker_id', '=', 'ls.id')
+                                        ->get();
+        // $kategori = Lamaran::join('lokers as ls', 'lm.loker_id', '=', 'ls.id')->get
+                                        // dd($kategori);
         $lamaran = Lamaran::count();
         $lowongan = Loker::count();
-        return view('pages.dashboard',[
+        return view('pages.dashboard',
+        [
             'user' => $user,
             'lamaran' => $lamaran,
             'lowongan' => $lowongan,
-        ]);
+            'kategori' => $kategori
+        ]
+        );
     });
 });
 
@@ -49,6 +57,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
+    Route::post('lowonganKerjaDetail', 'Admin\LokerController@detail')->name('detail.show');
+
     Route::resource('lamaran', 'Admin\LamaranController');
     Route::get('lamaran/download/{id}', 'Admin\LamaranController@download')->name('lamaran.download');
 
@@ -61,7 +71,6 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::get('NilaiWawancara/{id}', 'Admin\JawabanController@wawancara')->name('NilaiWawancara');
     Route::post('NilaiWawancaraStore', 'Admin\JawabanController@wawancaraStore')->name('NilaiWawancaraStore');
     Route::patch('NilaiWawancara/{id}', 'Admin\JawabanController@wawancaraUpdate')->name('NilaiWawancaraUpdate');
-
 });
 
 Route::prefix('pelamar')->middleware([Pelamar::class, 'auth'])->group(function () {

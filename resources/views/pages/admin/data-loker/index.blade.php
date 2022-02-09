@@ -48,25 +48,21 @@
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('lowonganKerja.show', $loker->id) }}">
+                {{-- <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('lowonganKerja.show', $loker->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
-                </a>
-                <a class="flex items-bottom mr-3" href="{{ route('lowonganKerja.edit', $loker->id) }}">
-                  <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                  Ubah
-                </a>
-                <form action="{{ route('lowonganKerja.destroy', $loker->id) }}" method="post"
-                  onsubmit="return confirm('Yakin hapus data ?')">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit">
-                    <div class="flex items-bottom text-theme-6">
-                      <i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                      Hapus
-                    </div>
-                  </button>
-                </form>
+                </a> --}}
+                    @if($loker->status != 'Tidak Aktif')
+                        <button class="btn btn-success">
+                            tidak aktif
+                        </button>
+                        {{-- <input data-target="#input" class="show-code input input--switch border" type="checkbox"> --}}
+                    @else
+                        <a href="{{ route('detail.show',$loker->id) }}"
+                            class="btn btn-info">
+                            Aktif
+                        </a>
+                    @endif
               </div>
             </td>
           </tr>
