@@ -24,14 +24,14 @@
                 <input type="hidden" name="kuis_id" value="{{$kuis->id}}" >
                 <input type="hidden" name="pelamar_id" value="{{$pelamar->id}}" >
                 <div class="flex items-center p-5 border-b border-gray-200">
-                    <h2 class="font-medium text-base mr-auto">Nilai Untuk Pelamar : @if(!empty($pelamar->nama)){{{$pelamar->nama}}}@endif Nama Tidak Dicantumkan </h2>
+                    <h2 class="font-medium text-base mr-auto">Nilai Untuk Pelamar : @if(!empty($pelamar->nama)){{{$pelamar->nama}}}@endif</h2>
                 </div>
                 <div class="p-5">
                     <div class="flex flex-col sm:flex-row">
                       <div class="mr-auto">
                           <a href="" class="font-medium">Nilai</a>
                           <div class="text-gray-600 mt-1">
-                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai" value="{{$nilai->nilai}}">    
+                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai" value="{{$nilai->nilai}}">
                           </div>
                       </div>
                     </div>
@@ -58,14 +58,14 @@
                 <input type="hidden" name="kuis_id" value="{{$kuis->id}}" >
                 <input type="hidden" name="pelamar_id" value="{{$pelamar->id}}" >
                 <div class="flex items-center p-5 border-b border-gray-200">
-                    <h2 class="font-medium text-base mr-auto">Nilai Untuk Pelamar : @if(!empty($pelamar->nama)){{{$pelamar->nama}}}@endif Nama Tidak Dicantumkan </h2>
+                    <h2 class="font-medium text-base mr-auto">Nilai Untuk Pelamar : @if(!empty($pelamar->nama)){{{$pelamar->nama}}}@endif </h2>
                 </div>
                 <div class="p-5">
                     <div class="flex flex-col sm:flex-row">
                       <div class="mr-auto">
                           <a href="" class="font-medium">Nilai</a>
                           <div class="text-gray-600 mt-1">
-                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai">    
+                              <input name="nilai" type="text" class="input w-full border mt-2 flex-1" placeholder="Masukkan Nilai">
                           </div>
                       </div>
                     </div>

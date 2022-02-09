@@ -29,7 +29,7 @@
         <div class=" text-base text-gray-600">
           {{ $data->loker->nama }}
         </div>
-        <div class="text-gray-700 mt-3 text-justify">{{ $data->ket_pengumuman }}</div>
+        <div class="text-gray-700 mt-3 text-justify">{!! $data->ket_pengumuman !!}</div>
       </div>
     </div>
   </div>

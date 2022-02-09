@@ -60,7 +60,7 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
 
     Route::get('NilaiWawancara/{id}', 'Admin\JawabanController@wawancara')->name('NilaiWawancara');
     Route::post('NilaiWawancaraStore', 'Admin\JawabanController@wawancaraStore')->name('NilaiWawancaraStore');
-
+    Route::patch('NilaiWawancara/{id}', 'Admin\JawabanController@wawancaraUpdate')->name('NilaiWawancaraUpdate');
 
 });
 

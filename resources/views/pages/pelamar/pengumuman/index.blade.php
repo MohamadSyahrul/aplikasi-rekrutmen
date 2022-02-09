@@ -33,7 +33,7 @@
           <a href="" class="block font-medium text-base mt-5">{{ $pengumuman->judul_pengumuman }}</a>
           <div class="text-gray-700">{{ $pengumuman->loker->nama }}</div>
           <div class="text-gray-500 mt-3">
-            {{ Str::limit($pengumuman->ket_pengumuman, 100) }}
+            {!! Str::limit($pengumuman->ket_pengumuman, 100) !!}
           </div>
           <div class="mt-5">
             <a class="button bg-theme-1 text-white" href="{{ route('pelamarPengumuman.show', $pengumuman->id) }}">

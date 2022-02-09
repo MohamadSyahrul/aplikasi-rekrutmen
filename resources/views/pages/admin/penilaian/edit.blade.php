@@ -111,7 +111,7 @@
                 @if(!empty($pl->nama))
                     <div class="font-medium whitespace-no-wrap">{{$pl->nama}}</div>
                 @else
-                    <div class="font-medium whitespace-no-wrap">Nama Tidak Dicantumkan</div>
+                    <div class="font-medium whitespace-no-wrap"></div>
                 @endif
             </td>
             <td class="border-b">
