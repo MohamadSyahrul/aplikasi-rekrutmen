@@ -48,21 +48,22 @@
             </td>
             <td class="border-b w-5">
               <div class="flex sm:justify-center items-center">
-                {{-- <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('lowonganKerja.show', $loker->id) }}">
+                <a class="flex items-bottom mr-3 text-theme-1" href="{{ route('lowonganKerja.show', $loker->id) }}">
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
-                </a> --}}
-                    @if($loker->status != 'Tidak Aktif')
-                        <button class="btn btn-success">
-                            tidak aktif
-                        </button>
-                        {{-- <input data-target="#input" class="show-code input input--switch border" type="checkbox"> --}}
-                    @else
-                        <a href="{{ route('detail.show',$loker->id) }}"
-                            class="btn btn-info">
-                            Aktif
-                        </a>
-                    @endif
+                </a>
+                {{-- <a href="{{ route('detail.show',$loker->id) }}"
+                    class="button text-white bg-theme-1">
+                    Aktif
+                </a>
+                @else
+                <button class="button text-white bg-theme-20">
+                   Tidak aktif
+               </button>
+                @endif --}}
+                        <input data-target="#input" name="status" class="show-code input input--switch border" type="checkbox"
+                        {{$loker->status ? 'checked' : '' }} onclick="changeStatus(event.target, {{ $loker->id }});">
+
               </div>
             </td>
           </tr>
@@ -71,6 +72,28 @@
     </table>
   </div>
   <!-- END: Datatable -->
+
+    <script>
+        // $(document).ready(function(){
+        //     $
+        // })
+        $(function(){
+            $('.show-code').change(function(){
+                var status  = $(this).prop('checked') == true ? 1 : 0;
+                var id = $(this).data('id');
+                    $.ajax({
+                        type : "GET",
+                        dataType : "json",
+                        url : "/changeStatus",
+                        data : {'status': status, 'id': id},
+                        success: function(data){
+                            console.log(data.success)
+                        }
+
+                    });
+            });
+        });
+    </script>
 @endsection
 @push('plugin-scripts')
 

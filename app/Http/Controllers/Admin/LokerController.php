@@ -166,10 +166,10 @@ class LokerController extends Controller
     }
 
     public function detail(Request $request, $id){
-        loker::where('id', $id)->update([
+        $lks = loker::where('id', $id)->update([
             'status' => 'Aktif',
         ]);
-    return redirect('lowonganKerja');
+        return redirect('lowonganKerja');
 
     }
 }

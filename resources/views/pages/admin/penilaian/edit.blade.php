@@ -115,8 +115,8 @@
                 @endif
             </td>
             <td class="border-b">
-                @if(!empty($pl->no_tlp))
-                    <div div class="font-medium whitespace-no-wrap">{{$pl->no_tlp}}</div>
+                @if(!empty($pl->no_telp))
+                    <div div class="font-medium whitespace-no-wrap">{{$pl->no_telp}}</div>
                 @else
                     <div class="font-medium whitespace-no-wrap">Telepon Tidak Dicantumkan</div>
                 @endif

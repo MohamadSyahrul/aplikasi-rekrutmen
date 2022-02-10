@@ -75,12 +75,12 @@ class JawabanController extends Controller
             $getNilai[$p1] = Penilaian::where('pelamar_id', $getPelamar[$p1]->id)->first();
             $p1++;
         }
-        // dd($lamaranALL);
         $kuis       = Kuis::where('loker_id', $id)->first();
         $soal       = Soal::where('kuis_id', $kuis->id)->get();
         $data       = Jawaban::where('lamaran_id', $lamaran->id)->get();
         $pelamar    = Pelamar::where('id', $lamaran->pelamar_id )->get();
         $getNilai   = Penilaian::where('lamaran_id', $lamaran->id)->get();
+        // dd($getPelamar);
 
         return view('pages.admin.penilaian.edit', compact(['data', 'loker', 'soal', 'kuis', 'lamaran', 'pelamar', 'getNilai', 'lamaranALL', 'getPelamar']));
     }
@@ -185,30 +185,30 @@ class JawabanController extends Controller
         return redirect(route('dataPenilaian.index'));
     }
 
-    public function wawancaraUpdate(Request $request, $id)
-    {
-        $data = $request->all();
-        $totalNilai = (($request->nilai1 + $request->nilai2 + $request->nilai3 + $request->nilai4 + $request->nilai5) / 5);
-        if($totalNilai >= 86 && $totalNilai <= 90){$ket = 'Sanget Baik';
-        }elseif($totalNilai >= 81 && $totalNilai <= 85){$ket = 'Baik';
-        }elseif($totalNilai >= 76 && $totalNilai <= 80){$ket = 'Cukup';
-        }elseif($totalNilai >= 71 && $totalNilai <= 75){$ket = 'Kurang';
-        }elseif($totalNilai >= 0 && $totalNilai <= 70){$ket = 'Sanget Kurang';
-        };
-        $getNilai = array($request->nilai1,$request->nilai2,$request->nilai3,$request->nilai4,$request->nilai5);
-        $nilai = json_encode($getNilai);
-        $createData = array(
-            "pelamar_id" => $request->pelamar_id,
-            "lamaran_id" => $request->lamaran_id,
-            "keterangan" => $ket,
-            "nilai" => $nilai,
-        );
-        // dd($createData);
-        Wawancara::create($createData);
+    // public function wawancaraUpdate(Request $request, $id)
+    // {
+    //     $data = $request->all();
+    //     $totalNilai = (($request->nilai1 + $request->nilai2 + $request->nilai3 + $request->nilai4 + $request->nilai5) / 5);
+    //     if($totalNilai >= 86 && $totalNilai <= 90){$ket = 'Sanget Baik';
+    //     }elseif($totalNilai >= 81 && $totalNilai <= 85){$ket = 'Baik';
+    //     }elseif($totalNilai >= 76 && $totalNilai <= 80){$ket = 'Cukup';
+    //     }elseif($totalNilai >= 71 && $totalNilai <= 75){$ket = 'Kurang';
+    //     }elseif($totalNilai >= 0 && $totalNilai <= 70){$ket = 'Sanget Kurang';
+    //     };
+    //     $getNilai = array($request->nilai1,$request->nilai2,$request->nilai3,$request->nilai4,$request->nilai5);
+    //     $nilai = json_encode($getNilai);
+    //     $createData = array(
+    //         "pelamar_id" => $request->pelamar_id,
+    //         "lamaran_id" => $request->lamaran_id,
+    //         "keterangan" => $ket,
+    //         "nilai" => $nilai,
+    //     );
+    //     // dd($createData);
+    //     Wawancara::create($createData);
 
-        return redirect(route('dataPenilaian.index'));
+    //     return redirect(route('dataPenilaian.index'));
 
-    }
+    // }
 
     public function wawancaraUpdate(Request $request, $id)
     {
