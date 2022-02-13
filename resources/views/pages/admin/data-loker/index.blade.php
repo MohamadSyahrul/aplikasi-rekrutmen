@@ -61,8 +61,8 @@
                    Tidak aktif
                </button>
                 @endif --}}
-                        <input data-target="#input" name="status" class="show-code input input--switch border" type="checkbox"
-                        {{$loker->status ? 'checked' : '' }} onclick="changeStatus(event.target, {{ $loker->id }});">
+                        <input data-id="{{$loker->id}}" name="status" class="show-code input input--switch border" type="checkbox"
+                        {{$loker->status ? 'checked' : '' }}>
 
               </div>
             </td>
@@ -73,21 +73,21 @@
   </div>
   <!-- END: Datatable -->
 
-    <script>
-        // $(document).ready(function(){
-        //     $
-        // })
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(#loker).Datatable()
+        });
         $(function(){
             $('.show-code').change(function(){
                 var status  = $(this).prop('checked') == true ? 1 : 0;
-                var id = $(this).data('id');
+                var loker_id = $(this).data('id');
                     $.ajax({
                         type : "GET",
                         dataType : "json",
                         url : "/changeStatus",
-                        data : {'status': status, 'id': id},
+                        data : {'status': status, 'loker_id': loker_id},
                         success: function(data){
-                            console.log(data.success)
+                            console.log('success')
                         }
 
                     });

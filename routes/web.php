@@ -23,16 +23,22 @@ use SebastianBergmann\CodeUnit\FunctionUnit;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('verifikasi-email', function () {
+    return view('pages.verifikasi');
+});
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
+Route::get('profile', function () {
+    // hanya user yang verified yang bisa mengakses route ini
+})->middleware('verified');
 // Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('icon', function () {
     return view('pages.icon');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $user = User::count();
         $kategori = DB::table("lamarans")->select(DB::raw('loker_id, nama, count(pelamar_id) jml_pelamar'))
@@ -57,7 +63,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
-    Route::get('lowonganKerjaDetail/{id}', 'Admin\LokerController@detail')->name('detail.show');
+    Route::get('/changeStatus', 'Admin\LokerController@detail')->name('changeStatus');
 
     Route::resource('lamaran', 'Admin\LamaranController');
     Route::get('lamaran/download/{id}', 'Admin\LamaranController@download')->name('lamaran.download');
