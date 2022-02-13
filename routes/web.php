@@ -35,11 +35,11 @@ Route::get('icon', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         $user = User::count();
-        $kategori = DB::table("lamarans as lm")->select(DB::raw('pelamar_id, ls.nama'))
-                                        ->leftJoin('lokers as ls', 'lm.loker_id', '=', 'ls.id')
-                                        ->get();
-        // $kategori = Lamaran::join('lokers as ls', 'lm.loker_id', '=', 'ls.id')->get
-                                        // dd($kategori);
+        $kategori = DB::table("lamarans")->select(DB::raw('loker_id, nama, count(pelamar_id) jml_pelamar'))
+                            ->leftJoin("lokers", "lamarans.loker_id", "=", "lokers.id")
+                            ->groupBy('loker_id', 'nama')
+                            ->get();
+                            // dd($kategori);
         $lamaran = Lamaran::count();
         $lowongan = Loker::count();
         return view('pages.dashboard',

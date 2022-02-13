@@ -64,7 +64,7 @@
                   <div class="flex">
                     <i data-feather="paperclip" class="report-box__icon text-theme-70"></i>
                   </div>
-                  <div class="text-3xl font-bold leading-8 mt-6">{{count([$item->pelamar_id])}}</div>
+                  <div class="text-3xl font-bold leading-8 mt-6">{{$item->jml_pelamar}}</div>
                   <div class="text-base text-gray-600 mt-1">{{$item->nama}}</div>
                 </div>
               </div>
