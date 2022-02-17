@@ -63,10 +63,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataPelamar', 'Admin\PelamarController');
     Route::resource('lowonganKerja', 'Admin\LokerController');
-    Route::get('/changeStatus', 'Admin\LokerController@detail')->name('changeStatus');
+    // Route::get('/changeStatus', 'Admin\LokerController@detail')->name('changeStatus');
 
     Route::resource('lamaran', 'Admin\LamaranController');
     Route::get('lamaran/download/{id}', 'Admin\LamaranController@download')->name('lamaran.download');
+
+    Route::get('/ubah_status/{id}', 'Admin\LokerController@ubah_status');
+    Route::get('/ubah_aktif/{id}', 'Admin\LokerController@ubahStatus');
 
 
     Route::resource('pengumuman', 'Admin\PengumumanController');

@@ -52,6 +52,10 @@
                   <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
                   Detail
                 </a>
+                <a class="flex items-bottom mr-3" href="{{ route('lowonganKerja.edit', $loker->id) }}">
+                    <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
+                    Ubah
+                  </a>
                 {{-- <a href="{{ route('detail.show',$loker->id) }}"
                     class="button text-white bg-theme-1">
                     Aktif
@@ -61,9 +65,13 @@
                    Tidak aktif
                </button>
                 @endif --}}
-                        <input data-id="{{$loker->id}}" name="status" class="show-code input input--switch border" type="checkbox"
-                        {{$loker->status ? 'checked' : '' }}>
-
+                        {{-- <input data-id="{{$loker->id}}" name="status" class="show-code input input--switch border" type="checkbox"
+                        {{$loker->status ? 'checked' : '' }}> --}}
+                    @if ($loker->status == "aktif")
+                        <a href="ubah_status/{{$loker->id}}" class="button button--sm w-24 mr-1 mb-2 bg-theme-9 text-white">&nbsp; Aktif</a>
+                    @else
+                        <a href="ubah_aktif/{{$loker->id}}" class="button button--sm w-24 mr-1 mb-2 bg-theme-6 text-white">&nbsp; Tidak aktif</a>
+                    @endif
               </div>
             </td>
           </tr>

@@ -35,36 +35,38 @@
       </thead>
       <tbody>
         @foreach ($data as $loker)
-          <tr>
-            <td class="whitespace-no-wrap border-b">{{ date('d F Y',strtotime($loker->created_at)) }}</td>
-            <td class="border-b">
-              <div class="font-medium whitespace-no-wrap">{{ $loker->nama }}</div>
-              <div class="text-gray-600 text-xs whitespace-no-wrap">{!! $loker->detail !!}</div>
-            </td>
-            <td class="border-b w-5">
-              <div class="flex sm:justify-center items-center">
-                <a class="flex items-bottom mr-3 text-theme-1"
-                  href="{{ route('pelamarLowonganKerja.show', $loker->id) }}">
-                  <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
-                  Detail
-                </a>
-                <a class="flex items-bottom mr-3" href="{{ route('pelamarLowonganKerja.lamar', $loker->id) }}">
-                  <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
-                  Lamar
-                </a>
-                <form action="{{ route('pelamarLowonganKerja.hapusLamaran', $loker->id) }}" method="post"
-                  onsubmit="return confirm('Yakin hapus data ?')">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit">
-                    <div class="flex items-center text-theme-6"><i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
-                      Hapus Lamaran
-                    </div>
-                  </button>
-                </form>
-              </div>
-            </td>
-          </tr>
+            @if ($loker->status == "aktif")
+            <tr>
+              <td class="whitespace-no-wrap border-b">{{ date('d F Y',strtotime($loker->created_at)) }}</td>
+              <td class="border-b">
+                <div class="font-medium whitespace-no-wrap">{{ $loker->nama }}</div>
+                <div class="text-gray-600 text-xs whitespace-no-wrap">{!! $loker->detail !!}</div>
+              </td>
+              <td class="border-b w-5">
+                <div class="flex sm:justify-center items-center">
+                  <a class="flex items-bottom mr-3 text-theme-1"
+                    href="{{ route('pelamarLowonganKerja.show', $loker->id) }}">
+                    <i data-feather="corner-down-right" class="w-4 h-4 mr-1"></i>
+                    Detail
+                  </a>
+                  <a class="flex items-bottom mr-3" href="{{ route('pelamarLowonganKerja.lamar', $loker->id) }}">
+                    <i data-feather="edit-2" class="w-4 h-4 mr-1"></i>
+                    Lamar
+                  </a>
+                  <form action="{{ route('pelamarLowonganKerja.hapusLamaran', $loker->id) }}" method="post"
+                    onsubmit="return confirm('Yakin hapus data ?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">
+                      <div class="flex items-center text-theme-6"><i data-feather="trash-2" class="w-4 h-4 mr-1"></i>
+                        Hapus Lamaran
+                      </div>
+                    </button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+            @endif
         @endforeach
       </tbody>
     </table>
