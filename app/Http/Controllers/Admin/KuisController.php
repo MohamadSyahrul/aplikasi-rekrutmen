@@ -18,12 +18,13 @@ class KuisController extends Controller
     public function index()
     {
         $data = Kuis::all();
+        $loker = Loker::all();
         // $data = Soal::orderBy('kuis_id', 'desc')->groupBy('kuis_id')->get();
         // $data2 = Soal::groupBy('kuis_id')
         //                 ->selectRaw('sum(bobot_soal) as nilaiMax')
         //                 ->get();
         // dd($data);
-        return view('pages.admin.kuis.index', compact('data'));
+        return view('pages.admin.kuis.index', compact('data', 'loker'));
     }
 
     /**
@@ -87,7 +88,7 @@ class KuisController extends Controller
             $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
-            
+
             return view('pages.admin.kuis.detail', compact(['data', 'soal']));
         }else{
             foreach ($soal as $row)  {
@@ -102,7 +103,7 @@ class KuisController extends Controller
             $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
-            
+
             return view('pages.admin.kuis.detail', compact(['data', 'soal', 'getPilihan']));
         }
     }
@@ -118,6 +119,8 @@ class KuisController extends Controller
         $data  = Kuis::findOrFail($id);
         $soal  = Soal::where('kuis_id', $id)->get();
         $loker = Loker::all();
+
+
         $a=0;
         if(Soal::where('kuis_id', $id)->first() == null){
             foreach ($soal as $row)  {
@@ -132,7 +135,7 @@ class KuisController extends Controller
             $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
-            
+
             return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal']));
         }else{
             foreach ($soal as $row)  {
@@ -147,7 +150,7 @@ class KuisController extends Controller
             $data['waktu_mulai']    = date('Y-m-d H:i:s', $date2);
             $data['waktu_selesai']  = date('Y-m-d H:i:s', $date3);
             $data['durasi']         = date('H:i:s', $date4);
-            
+
             return view('pages.admin.kuis.edit', compact(['data', 'loker', 'soal', 'getPilihan']));
         }
     }
@@ -192,5 +195,24 @@ class KuisController extends Controller
         $data->delete();
 
         return redirect(route('dataKuis.index'))->with('success', 'Data Kuis berhasil dihapus');
+    }
+
+
+    public function tambah(Request $request)
+    {
+        // $data = $request->all();
+        $data = Kuis::select('nama','tgl_kuis','waktu_mulai','waktu_selesai','durasi')
+                    ->where('nama', $request->nama)->get();
+        // dd($data);
+        Kuis::create([
+            'nama' => $request->nama,
+            'tgl_kuis' => $data[0]['tgl_kuis'],
+            'waktu_mulai' => $data[0]['waktu_mulai'],
+            'waktu_selesai' => $data[0]['waktu_selesai'],
+            'durasi' => $data[0]['durasi'],
+            'loker_id' => $request->loker_id
+        ]);
+
+        return redirect(route('dataKuis.index'))->with('success', 'Soal berhasil Ditambahkan');
     }
 }

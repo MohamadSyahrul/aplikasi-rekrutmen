@@ -50,6 +50,25 @@ class SoalController extends Controller
         return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Ditambahkan');
     }
 
+    public function tambah(Request $request)
+    {
+        // $data = $request->all();
+        $data = Soal::select('nama_soal','bobot_soal','soal','pilihanGanda','kunci_jawaban', 'kuis_id')
+                    ->where('nama_soal', $request->nama_soal)->get();
+        // dd($data[0]['bobot_soal']);
+        Soal::create([
+            'nama_soal' => $request->nama_soal,
+            'bobot_soal' => $data[0]['bobot_soal'],
+            'soal' => $data[0]['soal'],
+            'pilihanGanda' => $data[0]['pilihanGanda'],
+            'kunci_jawaban' => $data[0]['kunci_jawaban'],
+            'kuis_id' => $data[0]['kuis_id']
+
+        ]);
+
+        return redirect(route('dataKuis.edit', $data[0]['kuis_id']))->with('success', 'Soal berhasil Ditambahkan');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -85,7 +104,7 @@ class SoalController extends Controller
         $data = $request->all();
 
         $soal->update($data);
-        
+
         return redirect(route('dataKuis.edit', $request->kuis_id))->with('success', 'Soal berhasil Diupdate');
     }
 

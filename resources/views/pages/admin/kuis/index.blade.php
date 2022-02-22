@@ -22,6 +22,10 @@
             <a href="{{ route('dataKuis.create') }}"
               class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
               <i data-feather="file-plus" class="w-4 h-4 mr-2"></i> Tambah Data </a>
+
+            <a href="javascript:;" data-toggle="modal" data-target="#tambahKuis"
+            class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+              <i data-feather="file" class="w-4 h-4 mr-2"></i> Create Data </a>
           </div>
         </div>
       </div>
@@ -90,4 +94,43 @@
     </table>
   </div>
   <!-- END: Datatable -->
+
+
+  <div class="modal" id="tambahKuis">
+    <div class="modal__content">
+        <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
+            <h2 class="font-medium text-base mr-auto">Tambah Data Kuis</h2>
+        </div>
+        <form action="{{ route('dataTambahKuis.tambah')}}" method="POST">
+            @csrf
+            <div class="p-5 cols-12 gap-4 row-gap-3">
+                <div class="col-span-12 sm:col-span-6">
+
+                    <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Kuis</label>
+                            <select id="nama" name="nama" class="select2 w-full border mt-2 flex-1">
+                                @foreach($data as $key => $sl)
+                                <option id="nama[{{$key}}]" name="nama" value="{{$sl->nama}}">{{$sl->nama}}
+                                </option>
+                                @endforeach
+                            </select>
+                </div>
+
+
+                <div class="col-span-12 sm:col-span-6">
+
+                    <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Loker</label>
+                            <select id="loker_id" name="loker_id" class="select2 w-full border mt-2 flex-1">
+                                @foreach($loker as $key => $sl)
+                                <option id="loker_id[{{$key}}]" name="loker_id" value="{{$sl->id}}">{{$sl->nama}}
+                                </option>
+                                @endforeach
+                            </select>
+                </div>
+            </div>
+            <div class="px-5 py-3 text-right border-t border-gray-200">
+                <button type="submit" class="button w-20 bg-theme-1 text-white">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
 @endsection

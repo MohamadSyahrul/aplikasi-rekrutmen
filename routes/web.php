@@ -78,6 +78,9 @@ Route::middleware([Admin::class, 'auth'])->group(function () {
     Route::resource('dataSoal', 'Admin\SoalController');
     Route::resource('dataPenilaian', 'Admin\JawabanController');
 
+    Route::post('dataTambah', 'Admin\SoalController@tambah')->name('dataSoal.tambah');
+    Route::post('dataTambahKuis', 'Admin\KuisController@tambah')->name('dataTambahKuis.tambah');
+
     Route::get('NilaiWawancara/{id}', 'Admin\JawabanController@wawancara')->name('NilaiWawancara');
     Route::post('NilaiWawancaraStore', 'Admin\JawabanController@wawancaraStore')->name('NilaiWawancaraStore');
     Route::patch('NilaiWawancara/{id}', 'Admin\JawabanController@wawancaraUpdate')->name('NilaiWawancaraUpdate');

@@ -82,8 +82,11 @@ Ubah Data Kuis
             <div class="dropdown-box mt-10 absolute w-40 top-0 right-0 z-20">
                 <div class="dropdown-box__content box p-2">
                     <a href="javascript:;" data-toggle="modal" data-target="#tambahSoal"
-                        class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
-                        <i data-feather="file-plus" class="w-4 h-4 mr-2"></i>Data Soal</a>
+                    class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
+                    <i data-feather="file-plus" class="w-4 h-4 mr-2"></i>Data Soal</a>
+                    <a href="javascript:;" data-toggle="modal" data-target="#createSoal"
+                        class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-400 rounded-md">
+                        <i data-feather="file" class="w-4 h-4 mr-2"></i>Tambah</a>
                 </div>
             </div>
         </div>
@@ -329,6 +332,36 @@ Ubah Data Kuis
         </form>
     </div>
 </div>
+
+
+<div class="modal" id="createSoal">
+    <div class="modal__content">
+        <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
+            <h2 class="font-medium text-base mr-auto">Tambah Data Soal Yang Sudah Ada</h2>
+        </div>
+        <form action="{{ route('dataSoal.tambah')}}" method="POST">
+            @csrf
+            <div class="p-5 cols-12 gap-4 row-gap-3">
+
+
+                <div class="col-span-12 sm:col-span-6">
+
+                    <label class="w-full lg:w-40 sm:w-20 sm:text-left sm:mr-5">Nama Soal</label>
+                            <select id="nama_soal" name="nama_soal" class="select2 w-full border mt-2 flex-1">
+                                @foreach($soal as $key => $sl)
+                                <option id="nama_soal[{{$key}}]" name="nama_soal" value="{{$sl->nama_soal}}">{{$sl->nama_soal}}
+                                </option>
+                                @endforeach
+                            </select>
+                </div>
+            </div>
+            <div class="px-5 py-3 text-right border-t border-gray-200">
+                <button type="submit" class="button w-20 bg-theme-1 text-white">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 
 @endsection()
