@@ -41,19 +41,22 @@ Route::get('icon', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         $user = User::count();
-        $kategori = DB::table("lamarans")->select(DB::raw('loker_id, nama, count(pelamar_id) jml_pelamar'))
+        $kategori = DB::table("lamarans")->select(DB::raw('loker_id, nama, count(pelamar_id) jml_pelamar'), 'status')
                             ->leftJoin("lokers", "lamarans.loker_id", "=", "lokers.id")
                             ->groupBy('loker_id', 'nama')
                             ->get();
                             // dd($kategori);
         $lamaran = Lamaran::count();
         $lowongan = Loker::count();
+        // $data = Loker::select('status')->get();
+        // dd($data);
         return view('pages.dashboard',
         [
             'user' => $user,
             'lamaran' => $lamaran,
             'lowongan' => $lowongan,
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            // 'data' => $data
         ]
         );
     });
