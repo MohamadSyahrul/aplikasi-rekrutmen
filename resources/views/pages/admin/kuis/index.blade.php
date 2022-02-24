@@ -25,7 +25,7 @@
 
             <a href="javascript:;" data-toggle="modal" data-target="#tambahKuis"
             class="flex items-center block p-2 transition duration-300 ease-in-out bg-white hover:bg-gray-200 rounded-md">
-              <i data-feather="file" class="w-4 h-4 mr-2"></i> Create Data </a>
+              <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy Data </a>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
   <div class="modal" id="tambahKuis">
     <div class="modal__content">
         <div class="flex items-center px-5 py-5 sm:py-3 border-b border-gray-200">
-            <h2 class="font-medium text-base mr-auto">Tambah Data Kuis</h2>
+            <h2 class="font-medium text-base mr-auto">Copy Data Kuis & Soal</h2>
         </div>
         <form action="{{ route('dataTambahKuis.tambah')}}" method="POST">
             @csrf

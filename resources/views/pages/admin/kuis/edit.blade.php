@@ -3,7 +3,7 @@
 Ubah Data Kuis
 @endsection
 @section('breadcrumb')
-Ubah Data Kuis
+Kuis {{$data->nama}}
 @endsection
 @section('content')
 <div class="intro-y flex flex-col sm:flex-row items-center mt-8">

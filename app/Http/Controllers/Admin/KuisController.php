@@ -201,17 +201,36 @@ class KuisController extends Controller
     public function tambah(Request $request)
     {
         // $data = $request->all();
-        $data = Kuis::select('nama','tgl_kuis','waktu_mulai','waktu_selesai','durasi')
-                    ->where('nama', $request->nama)->get();
-        // dd($data);
-        Kuis::create([
-            'nama' => $request->nama,
-            'tgl_kuis' => $data[0]['tgl_kuis'],
-            'waktu_mulai' => $data[0]['waktu_mulai'],
-            'waktu_selesai' => $data[0]['waktu_selesai'],
-            'durasi' => $data[0]['durasi'],
-            'loker_id' => $request->loker_id
-        ]);
+        $data = Kuis::select('id','nama','tgl_kuis','waktu_mulai','waktu_selesai','durasi')
+                    ->where('nama', $request->nama)->first();
+        // dd($data['nama']);
+
+        $kuis = Kuis::create([
+                'nama' => $data['nama'],
+                'tgl_kuis' => $data['tgl_kuis'],
+                'waktu_mulai' => $data['waktu_mulai'],
+                'waktu_selesai' => $data['waktu_selesai'],
+                'durasi' => $data['durasi'],
+                'loker_id' => $request->loker_id
+                ]);
+
+        $soal = Soal::select('nama_soal', 'bobot_soal', 'soal', 'pilihanGanda', 'kunci_jawaban')
+                    ->where('kuis_id', $data['id'])->get();
+            $sl = json_decode($soal);
+            // dd($sl[1]);
+
+            foreach($sl as $item){
+                // $nama = $item->nama_soal;
+                // dd($nama);
+                Soal::insert([
+                    'nama_soal' => $item->nama_soal,
+                    'bobot_soal' => $item->bobot_soal,
+                    'soal' => $item->soal,
+                    'pilihanGanda' => $item->pilihanGanda,
+                    'kunci_jawaban' => $item->kunci_jawaban,
+                    'kuis_id' => $kuis->id,
+                ]);
+            }
 
         return redirect(route('dataKuis.index'))->with('success', 'Soal berhasil Ditambahkan');
     }
